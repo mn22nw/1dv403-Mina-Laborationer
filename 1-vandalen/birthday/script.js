@@ -2,7 +2,6 @@
 
 window.onload = function(){
 
-	
 	var birthday = function(date){
 	
 		var validateInput = /(\d{4})[-\/](\d{2})[-\/](\d{2})/.exec(date);
@@ -14,30 +13,23 @@ window.onload = function(){
 			throw new Error("Du måste välja ett datum!");
          }
 		 
-	var splitDate= validateInput.toString();
-	
-var arrDate= splitDate.split(",");
-console.log(arrDate);
+	var splitDate= validateInput.toString();	
+	var arrDate= splitDate.split(",");
+	var setBirthday = new Date(arrDate[1],arrDate[2] - 1,arrDate[3])
+	var currdate = new Date();
+	var differenceInMilliseconds = setBirthday-currdate;
+	var differenceInDays = Math.ceil(differenceInMilliseconds / 1000 / 60 / 60 / 24);
 
-var setBirthday = new Date(arrDate[1],arrDate[2] - 1,arrDate[3])
+	if (differenceInDays === 0) {
+	return 0;
+	}	
 
-var currdate = new Date();
-
-var differenceInMilliseconds = setBirthday-currdate;
-console.log(Math.ceil(differenceInMilliseconds / 1000 / 60 / 60 / 24));
-
-
-if (setBirthday < currdate) {
- throw new Error("Din födelsedag har redan varit!");
-}
-if (setBirthday > currdate) {
- console.log("jaa"); 
-}
-else{
-console.log("Efter");
-return "5";
-}
-		 
+	if (setBirthday < currdate) {
+	 throw new Error("Din födelsedag har redan varit!!");
+	}
+	if (setBirthday > currdate) {
+	 return differenceInDays;
+	} 
 	};
 	// ------------------------------------------------------------------------------
 
