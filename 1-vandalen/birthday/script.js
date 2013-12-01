@@ -4,14 +4,31 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-		
+	
+		var validateInput = /(\d{4})[-\/](\d{2})[-\/](\d{2})/.exec(date);
+	
+	console.log(validateInput);
+	if (validateInput == null)
+         {
+            console.log("biih");
+			throw new Error("Du måste välja ett datum!");
+         }
+		 
+	var splitDate= validateInput.toString();
+	
+var arrDate= splitDate.split(",");
+console.log(arrDate);
 
-
-			// Din kod här.
-
-
-
-
+var setBirthday = new Date(arrDate[1],arrDate[2] - 1,arrDate[3])
+console.log(setBirthday);
+var currdate = new Date();
+if (setBirthday < currdate) {
+ console.log("Före");
+}else{
+console.log("Efter");
+return "5";
+}
+		 
 	};
 	// ------------------------------------------------------------------------------
 
@@ -28,7 +45,8 @@ window.onload = function(){
 		p.classList.remove( "error");
 
 		try {
-			var answer = birthday(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"
+			var answer = birthday(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"'
+			console.log(answer);
 			var message;
 			switch (answer){
 				case 0: message = "Grattis på födelsedagen!";
