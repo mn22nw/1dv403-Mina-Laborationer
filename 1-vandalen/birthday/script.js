@@ -20,11 +20,20 @@ var arrDate= splitDate.split(",");
 console.log(arrDate);
 
 var setBirthday = new Date(arrDate[1],arrDate[2] - 1,arrDate[3])
-console.log(setBirthday);
+
 var currdate = new Date();
+
+var differenceInMilliseconds = setBirthday-currdate;
+console.log(Math.ceil(differenceInMilliseconds / 1000 / 60 / 60 / 24));
+
+
 if (setBirthday < currdate) {
- console.log("Före");
-}else{
+ throw new Error("Din födelsedag har redan varit!");
+}
+if (setBirthday > currdate) {
+ console.log("jaa"); 
+}
+else{
 console.log("Efter");
 return "5";
 }
