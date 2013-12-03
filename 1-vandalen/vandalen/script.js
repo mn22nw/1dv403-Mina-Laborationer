@@ -2,31 +2,17 @@
 
 
 	var makePerson = function(persArr){
-
-	//konstruktor
-	function Person(name,age){
-	this.getName = function () { return name; }
-	this.setName = function (_name) { name=_name;}
-
-	this.getAge = function () { return age; }
-	this.setAge = function (_age) { age=_age;}
-
-	this.setName(name);
-	this.setAge(age);
-
-	}
-	Person.prototype.minAge
-
-	var person1 = new Person("John Häggerud", 37);
-	var person2 = new Person("Johan Leitet", 36);
-	var person3 = new Person("Mats Loock", 46);
 	var nameArray = [];
-	var persons = [person1, person2, person3];
-
-	persons.forEach(function(person) {
-	nameArray.push(person.getName());
+	var ageArray = [];
+	persArr.forEach(function(person) {
+	nameArray.push(person.name);
+	ageArray.push(person.age);
 	});
-	nameArray.sort();
+	nameArray.sort(function(a,b){ return a.localeCompare(b);});
+	nameArray = nameArray.join(", "); 
+	//persArr.prototype.minAge
+
+	
   //console.log(person1.getName());
   
   var result = {
@@ -34,7 +20,7 @@
   minAge: 0,
   maxAge:120,
   averageAge: 67,
-  names:nameArray.join(", ")
+  names:nameArray
   };
 
   /* var objPerson = {
