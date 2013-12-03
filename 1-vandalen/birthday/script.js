@@ -5,11 +5,9 @@ window.onload = function(){
 	var birthday = function(date){
 	
 		var validateInput = /(\d{4})[-\/](\d{2})[-\/](\d{2})/.exec(date);
-	
-	console.log(validateInput);
+		
 	if (validateInput == null)
          {
-            console.log("biih");
 			throw new Error("Du måste välja ett datum!");
          }
 		 

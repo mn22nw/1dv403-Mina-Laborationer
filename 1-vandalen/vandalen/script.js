@@ -2,6 +2,7 @@
 
 
 	var makePerson = function(persArr){
+
 	var nameArray = [];
 	var ageArray = [];
 	persArr.forEach(function(person) {
@@ -18,7 +19,6 @@
   
    
   var result = {
-  
   minAge:ageArray[0],
   maxAge:ageArray[ageArray.length-1],
   averageAge: Math.round(total/ ageArray.length),
@@ -27,4 +27,9 @@
   
    return result;
 };
+var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
+
+var result = makePerson(data);
+
+console.log(result);
 
