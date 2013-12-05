@@ -1,0 +1,39 @@
+﻿@charset "UTF-8";
+
+	body {		overflow-y: scroll;}
+	h2 {			padding-top:10px;}
+	
+	
+		/** Anger sidansstorlek och placering*
+---------------------------------------------------------------------- */				
+	#page {		width:700px; 
+				min-height:600px; 
+				height:auto !important;  
+				margin:0 auto;
+				padding-bottom:15px;
+				background:#3F42FF;
+				padding:10px;
+	}
+	#number {	width:90%;
+				height:100px;
+				margin:0 auto;
+				display:block;
+				border:2px solid #A6AEF4;}
+	#send {		margin:0 auto; 
+				padding:15px;
+				width:120px;
+				margin:25px;
+				}
+	header {     display:block; 
+				height:200px; 
+				background:#FFF;
+				background-image:url('pics/header.png');
+				background-repeat:no-repeat;
+				text-indent:100%;
+				white-space:nowrap;
+				overflow:hidden;}
+	#container { background:#FFF;}
+		
+	
+
+
