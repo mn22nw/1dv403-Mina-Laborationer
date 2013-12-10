@@ -33,19 +33,24 @@
 				white-space:nowrap;
 				overflow:hidden;}
 	#container { background:#FFF;}
-	#display-messages {
+	#displayMessages {
 				overflow-y: scroll;
 				margin:0 auto;
 				width:90%;
 				height:200px;
 				max-height:300px;
 	}
+	.displayMessage {
+				background:green; min-width:200px; min-height:30px;
+				border: 2px solid black;
+	}
 	#time:empty {display:none;}
 	#time { 		
 				max-width: 50px;
 				padding:5px;
 				background:yellow;}
-		
+	.messageDate { background:green; text-align:right;}
+	.messageText { }
 	
 
 
