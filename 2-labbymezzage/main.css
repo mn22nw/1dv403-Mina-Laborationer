@@ -33,6 +33,18 @@
 				white-space:nowrap;
 				overflow:hidden;}
 	#container { background:#FFF;}
+	#display-messages {
+				overflow-y: scroll;
+				margin:0 auto;
+				width:90%;
+				height:200px;
+				max-height:300px;
+	}
+	#time:empty {display:none;}
+	#time { 		
+				max-width: 50px;
+				padding:5px;
+				background:yellow;}
 		
 	
 

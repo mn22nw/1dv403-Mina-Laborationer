@@ -19,11 +19,21 @@ Message.prototype.toString = function() {
  
 Message.prototype.getHTMLText = function() {
 
-// här ska det visst finnas något
+return this.getText();
 
 }
 Message.prototype.getDateText = function() {
+var hours = this.getDate().getHours();
+var minutes = this.getDate().getMinutes();
+var seconds = this.getDate().getSeconds();
 
-// här ska det visst också finnas något
+function addZero(value) {
+    if(value < 10) {
+        return '0' + value;
+    } else {
+        return value;
+    }
+}
+return addZero(hours)+":"+addZero(minutes)+":"+addZero(seconds);
 
 }
