@@ -37,3 +37,12 @@ function addZero(value) {
 return addZero(hours)+":"+addZero(minutes)+":"+addZero(seconds);
 
 }
+Message.prototype.getDateMessage = function() {
+var monthNames = [ "Januari", "Februari", "Mars", "April", "Maj", "Juni",
+    "Juli", "Augusti", "September", "October", "November", "December" ];
+var month = this.getDate().getMonth();
+var year = this.getDate().getFullYear();
+var day = this.getDate().getDate();
+return day+" "+monthNames[month]+" "+year;
+
+}

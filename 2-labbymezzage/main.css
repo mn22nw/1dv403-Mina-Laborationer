@@ -52,7 +52,11 @@
 	.messageDate {  text-align:right;}
 	.exitSquare1 { width:15px; height:15px; border: 1px solid red;
 				background:url('pics/exit.png');
-					float:right;}
+				margin:5px;
+				float:right;}
+	.clock { 	width:15px; height:15px; float:right;
+				margin:5px;
+				background:url('pics/clock.png');
 	
 
 
