@@ -34,7 +34,8 @@ window.onload = function() {
 		messageDiv.appendChild(text);
 		messageDiv.appendChild(date); 
 		exitSquare.addEventListener("click", function(){ 
-		MessageBoard.removeMessage(messageID);});
+		if(confirm("Är du säker på att du vill ta bort meddelandet?")){
+		MessageBoard.removeMessage(messageID);}});
 		clock.addEventListener("click", function(){ 
 		alert("Inlägget skapades den " +  MessageBoard.messages[messageID].getDateMessage()+" klockan " +MessageBoard.messages[messageID].getDateText());});
 		},
