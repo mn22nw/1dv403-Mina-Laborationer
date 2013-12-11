@@ -25,9 +25,11 @@
 				padding:15px;
 				width:120px;
 				margin:25px 0;
+				border:2px solid #A6AEF4;
+				font-weight:900;
 				}
 	#divforbutton { margin:0 auto; width:120px;}
-	header {     display:block; 
+	#header {     display:block; 
 				height:200px; 
 				background:#FFF;
 				background-image:url('pics/header.png');
@@ -42,28 +44,34 @@
 				min-height:300px;
 				height:100%;
 	}
-	#displayMessages  p {padding:15px;}
-	#countMessages { text-align:right; width:90%;
-					padding-top:15px;}
-	.displayMessage:empty {display:none;}
+	#displayMessages  p {	padding:15px;}
+	#countMessages {			text-align:right; 
+							width:90%;
+							padding-top:15px;}
+	.displayMessage:empty {	display:none;}
 	.displayMessage {
-				min-width:200px; min-height:30px;
-				border: 2px solid black;
-				border-radius:10px;
-				margin-bottom: 5px;
+							min-width:200px; 
+							min-height:30px;
+							border: 2px solid black;
+							border-radius:10px;
+							margin-bottom: 5px;
 	}
 
-	.messageDate {  text-align:right;}
-	.exitSquare1 { width:15px; height:15px; border: 1px solid red;
-				background:url('pics/exit.png');
-				margin:5px;
-				float:right;}
-	.clock { 	width:15px; height:15px; float:right;
-				margin:5px;
-				background:url('pics/clock.png');}
-	.messageText {  max-height:80%; margin-left:25px;
-					border-bottom:1px dotted #000;
-					width:70%;}
+	.messageDate {  			text-align:right;}
+	.exitSquare1 { 			width:15px; 
+							height:15px; 
+							border: 1px solid red;
+							background:url('pics/exit.png');
+							margin:5px;
+							float:right;}
+	.clock { 				width:15px; 
+							height:15px; 
+							float:right;
+							margin:5px;
+							background:url('pics/clock.png');}
+	.messageText { 			max-height:80%; margin-left:25px;
+							border-bottom:1px dotted #000;
+							width:70%;}
 	
 
 
