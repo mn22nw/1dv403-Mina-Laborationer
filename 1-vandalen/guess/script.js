@@ -42,8 +42,7 @@ window.onload = function(){
 try {
 		var answer = guess(input.value) // Läser in talet från textrutan och skickar till funktionen "guess"
 		p.innerHTML = answer[1];		// Skriver ut texten från arrayen som skapats i funktionen.	
-		
-		
+
 		if(answer[0] === true){				// Om spelet är slut, avaktivera knappen.
 			submit.disabled = true;
 		}
