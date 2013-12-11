@@ -37,10 +37,10 @@
 	#displayMessages {
 				margin:0 auto;
 				width:90%;
-				
 				min-height:300px;
 				height:100%;
 	}
+	#displayMessages  p {padding:15px;}
 	#countMessages { text-align:right; width:90%;}
 	.displayMessage:empty {display:none;}
 	.displayMessage {
@@ -50,7 +50,9 @@
 	}
 
 	.messageDate {  text-align:right;}
-	.messageText { }
+	.exitSquare1 { width:15px; height:15px; border: 1px solid red;
+				background:url('pics/exit.png');
+					float:right;}
 	
 
 

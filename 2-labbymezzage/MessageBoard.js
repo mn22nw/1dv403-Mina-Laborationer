@@ -11,7 +11,6 @@ window.onload = function() {
 	var MessageBoard = {
 	messages: [], 
 	init: function(e) {
-	
 	var mess = new Message (e, new Date());
 	console.log(mess.toString());
 	MessageBoard.messages.push(mess);
@@ -19,6 +18,8 @@ window.onload = function() {
 	
 	renderMessage: function(messageID) {
 		var messageDiv = document.createElement("div");
+		var exitSquare = document.createElement("div");
+		exitSquare.className = 'exitSquare1';
 		messageDiv.className = 'displayMessage';
 		var text = document.createElement("p");
 		var date = document.createElement("p");
@@ -27,9 +28,13 @@ window.onload = function() {
 		text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
 		date.innerHTML = MessageBoard.messages[messageID].getDateText();
 		div.appendChild(messageDiv);
+		messageDiv.appendChild(exitSquare);
 		messageDiv.appendChild(text);
 		messageDiv.appendChild(date); 
+		exitSquare.addEventListener("click", function(){ 
+		MessageBoard.removeMessage(messageID);});
 		},
+		
 	renderMessages: function() {
 	// Ta bort alla meddelanden
 	document.getElementById("displayMessages").innerHTML = "";
@@ -40,6 +45,10 @@ window.onload = function() {
 	MessageBoard.renderMessage(numberOfMessages++);
 	});
 	countMessages.innerHTML = "Antal meddelanden"+": "+numberOfMessages;
+	},
+	removeMessage: function(messageID) {
+	MessageBoard.messages.splice(messageID, 1);
+	MessageBoard.renderMessages();
 	}
 	}
 	
@@ -56,8 +65,9 @@ window.onload = function() {
 		input.onkeydown = function (e) {
 		e = e || window.event;
 		var keyCode = e.keyCode || e.which;
-		
-		if(keyCode==13 && !e.shiftKey) {
+		if(keyCode==13 && e.shiftKey) { 
+		console.log("jodå"); }
+		if(keyCode==13 && !e.shiftKey) { 
 		runProgram();} }
 	
 	var runProgram = function()  {
