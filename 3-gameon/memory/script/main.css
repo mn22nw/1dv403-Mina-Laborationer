@@ -29,7 +29,7 @@
 				font-weight:900;
 				}
 	#divforbutton { margin:0 auto; width:120px;}
-	#header {     display:block; 
+	#header {   display:block; 
 				height:50px; 
 				background:#FFF;
 
@@ -49,7 +49,9 @@
 	ul {			margin-top:55px;}
 	
 ul li {	width:200px; height:200px;
-		list-style:none; margin:-2.5em;
-		border:4px solid gray;
+		list-style:none; 
+		
+		display:inline;
 		}
+		img {border:4px solid gray;}
 

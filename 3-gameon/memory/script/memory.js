@@ -29,8 +29,11 @@ window.onload = function() {
 		e = e || window.event;
 		e.preventDefault(); 
 		var imagesArr = RandomGenerator.getPictureArray(2,4);
-		 
+		var br = document.createElement("br");
+		
 		for(var i = 0; i < imagesArr.length; i+=1){ 
+		if ( i === 4) 
+		ul.appendChild(br);
 		var li = document.createElement("li");
 		var a = document.createElement("a");
 		var img = document.createElement("img");
@@ -38,7 +41,9 @@ window.onload = function() {
 		li.appendChild(a);
 		a.appendChild(img);
 		img.setAttribute("src", imgSrc);
+		//a.setAttribute("href", "http://www.google.se");
 		ul.appendChild(li);}
+		Memory.submit1.disabled = true;
 		});
 		
 		Memory.submit2.addEventListener("click", function(e){
@@ -56,3 +61,4 @@ window.onload = function() {
 	});
 		
 }
+//http://stackoverflow.com/questions/15643842/createelement-inside-a-for-loop-just-replaces-created-item
