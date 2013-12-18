@@ -17,16 +17,16 @@ window.onload = function(){
 	var currdate = new Date();
 	var differenceInMilliseconds = setBirthday-currdate;
 	var differenceInDays = Math.ceil(differenceInMilliseconds / 1000 / 60 / 60 / 24);
-
+	console.log(differenceInDays);
 	if (differenceInDays === 0) {
 	return 0;
 	}	
 
 	if (setBirthday < currdate) {
-	 throw new Error("Din födelsedag har redan varit!!");
+	 return "Du fyller år om "+ ((differenceInDays*-1)+365)+" dagar";
 	}
 	if (setBirthday > currdate) {
-	 return differenceInDays;
+	 return "Du fyller år om " +differenceInDays +" dagar";
 	} 
 	};
 	// ------------------------------------------------------------------------------
@@ -45,14 +45,15 @@ window.onload = function(){
 
 		try {
 			var answer = birthday(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"'
-			console.log(answer);
 			var message;
 			switch (answer){
 				case 0: message = "Grattis på födelsedagen!";
 					break;
 				case 1: message = "Du fyller år imorgon!";
 					break;
-				default: message = "Du fyller år om " + answer + " dagar";
+				case 2: message ="ojojoj" + answer + "dagar";
+				break;
+				default: message = answer;
 					break;
 			}
 
