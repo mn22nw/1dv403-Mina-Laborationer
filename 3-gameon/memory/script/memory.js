@@ -25,9 +25,27 @@ window.onload = function() {
 		Memory.submit1.addEventListener("click", function(e){
 		e = e || window.event;
 		e.preventDefault(); 
-		Memory.init(2,4);
 		Memory.submit1.disabled = true;	
+		Memory.submit2.disabled = false;
+		generateBricks(2,4);
+		});
+		
+		Memory.submit2.addEventListener("click", function(e){
+		e = e || window.event;
+		e.preventDefault(); 
+		Memory.submit2.disabled = true;	
+		Memory.submit1.disabled = false;	
+		generateBricks(4,4);
+		});
+		
+		
+		
+		
+		function generateBricks(rows,cols){
+		score.innerHTML = "Poäng: ";
+		Memory.init(rows,cols);
 		tries.innerHTML ="";
+		ul.innerHTML ="";
 		var br = document.createElement("br");
 		
 		for(var i = 0; i < Memory.imagesArr.length; i+=1){ 
@@ -68,10 +86,10 @@ window.onload = function() {
 		compareBricks(e.target); Memory.idArray.length = 0;
 		countingBricks = 0;}
 		});
-		
+		//FUNKAR INTE MED ENTER?!
 		atags[i].addEventListener("keypress", function(e) {
 		var key = e.which || e.keyCode;
-		if (key === 13) { console.log("hej hej");
+		if (key === 13) { 
 		e = e || window.event; 
 		e.preventDefault();  
 		flipBadge(e.target);
@@ -87,11 +105,13 @@ window.onload = function() {
 		if (Memory.idArray[0] === Memory.idArray[1]){
 		Memory.flippedImages.length = 0;
 		score.innerHTML = "Poäng: " +(countScore +=1); }
-		if (countScore === 4) { 
+		setTimeout (function() {
+		if ((countScore === 4 && rows === 2) || (countScore === 8 && rows === 4)) { 
 		ul.innerHTML ="";
 		tries.innerHTML = "SPELET ÄR KLART! <br /> <br />Du behövde " + (countTries +1)+" försök";
 		Memory.submit1.disabled = false;	
-		}
+		Memory.submit2.disabled = false;	
+		}},500);
 		
 		if (Memory.idArray[0] !== Memory.idArray[1]){
 		mask.style.visibility= "visible";
@@ -103,8 +123,7 @@ window.onload = function() {
 		setTimeout (function() {
 		mask.style.visibility= "hidden";
 		}, 1000);
-		}
-		
+		}		
 		countTries += 1;
 		};
 		
@@ -112,18 +131,8 @@ window.onload = function() {
 		function flipBadge(target){ 
 		Memory.flippedImages.push(target);
 		target.setAttribute("src", "pics/"+target.parentNode.getAttribute("data-id")+".jpg");
+		}; 
 		};
-		
-		
-			
-		});
-		
-		Memory.submit2.addEventListener("click", function(e){
-		e = e || window.event;
-		e.preventDefault(); 
-		var imagesArr2 = RandomGenerator.getPictureArray(4,4);
-		console.log(imagesArr2);
-		});
 			
 }
 //http://stackoverflow.com/questions/15643842/createelement-inside-a-for-loop-just-replaces-created-item

@@ -1,7 +1,8 @@
 ﻿@charset "UTF-8";
 
 	body {		overflow-y: scroll;	
-				font-family:"Georgia", sans-serif;}
+				font-family:"Georgia", sans-serif;
+				}
 	h2 {			padding-top:10px;}
 	
 	
