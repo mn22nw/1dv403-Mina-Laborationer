@@ -38,9 +38,6 @@ window.onload = function() {
 		generateBricks(4,4);
 		});
 		
-		
-		
-		
 		function generateBricks(rows,cols){
 		score.innerHTML = "Poäng: ";
 		Memory.init(rows,cols);
