@@ -18,6 +18,8 @@ window.onload = function() {
 	};
 	var ul = document.querySelector("#container ul");
 	var score = document.querySelector("#container #score"); 
+	var tries = document.querySelector("#container #tries");
+	var mask = document.querySelector("#container #mask");
 	score.innerHTML = "Score: ";
 	// ------------------------------------------------------------------------------
 		Memory.submit1.addEventListener("click", function(e){
@@ -46,28 +48,26 @@ window.onload = function() {
 				
 		var atags = document.querySelectorAll("#container ul a");
 		console.log(atags);
-		
-		var countScore=0;
+		var countTries = 0;
+		var countScore = 0;
 		var initAtags = function(n) { //console.log("i am image number" +n);
 				return n;
 			};
 
 		for (var i = 0; i < atags.length; i+=1){
 		atags[i] = initAtags(i);	
-		var counting = 0;
+		var countingBricks = 0;
 		atags[i].addEventListener("click", function(e){
 		e = e || window.event;
 		e.preventDefault();  
 		flipBadge(e.target);
 		Memory.idArray.push(e.target.parentNode.getAttribute("data-id"));
-		counting +=1;
-		if (counting === 2){ 
-		//e.target.setAttribute("src", "pics/qm.jpg");
+		countingBricks +=1;
+		if (countingBricks === 2){ 
 		console.log(Memory.idArray[0], Memory.idArray[1]);
-		console.log("counting 2"); compareBricks(e.target); Memory.idArray.length = 0;
+		compareBricks(e.target); Memory.idArray.length = 0;
 		
-		
-		counting = 0;}
+		countingBricks = 0;}
 		
 
 		});}
@@ -76,18 +76,25 @@ window.onload = function() {
 		
 		if (Memory.idArray[0] === Memory.idArray[1]){
 		Memory.flippedImages.length = 0;
-		score.innerHTML = (countScore +=1); 
+		score.innerHTML = "Score: " +(countScore +=1); 
+		if (countScore === 4) { 
+		tries.innerHTML = "Antal försök : " + (countTries +1);
+		}
 		}
 		
-		else{
+		if (Memory.idArray[0] !== Memory.idArray[1]){
+		mask.style.visibility= "visible";
 		setTimeout (function() {
-		
 		Memory.flippedImages[0].setAttribute("src", "pics/qm.jpg");	
 		Memory.flippedImages[1].setAttribute("src", "pics/qm.jpg");	
-		Memory.flippedImages.length = 0;
+		Memory.flippedImages.splice(0, 2);
+		}, 1000);
+		setTimeout (function() {
+		mask.style.visibility= "hidden";
 		}, 1000);
 		}
 		
+		countTries += 1;
 		};
 		
 		
@@ -95,7 +102,7 @@ window.onload = function() {
 		Memory.flippedImages.push(target);
 		target.setAttribute("src", "pics/"+target.parentNode.getAttribute("data-id")+".jpg");
 		};
-
+		
 		
 		Memory.submit1.disabled = true;		
 		});
