@@ -119,12 +119,10 @@ window.onload = function() {
 		}, 1000);
 		setTimeout (function() {
 		mask.style.visibility= "hidden";
-		}, 1000);
-		}		
+		}, 1000); }		
 		countTries += 1;
 		};
-		
-		
+			
 		function flipBadge(target){ 
 		Memory.flippedImages.push(target);
 		target.setAttribute("src", "pics/"+target.parentNode.getAttribute("data-id")+".jpg");
