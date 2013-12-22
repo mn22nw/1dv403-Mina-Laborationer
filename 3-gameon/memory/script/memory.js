@@ -20,29 +20,29 @@ window.onload = function() {
 	var score = document.querySelector("#container #score"); 
 	var tries = document.querySelector("#container #tries");
 	var mask = document.querySelector("#container #mask");
-	score.innerHTML = "Score: ";
+	score.innerHTML = "Poäng: ";
 	// ------------------------------------------------------------------------------
 		Memory.submit1.addEventListener("click", function(e){
 		e = e || window.event;
 		e.preventDefault(); 
 		Memory.init(2,4);
-
-		console.log(Memory.imagesArr);  // FUNKAR!
+		Memory.submit1.disabled = true;	
+		tries.innerHTML ="";
 		var br = document.createElement("br");
-		console.log(Memory.imagesArr.length); // Korrekt
-
+		
 		for(var i = 0; i < Memory.imagesArr.length; i+=1){ 
 
-		if ( i === 4 || i === 8) {
+		if ( i === 4 || i === 8 || i === 12 ) {
 		ul.appendChild(br);}
 		
 		var li = document.createElement("li");
 		var a = document.createElement("a");
 		var img = document.createElement("img");
 		img.setAttribute("src", "pics/qm.jpg");		
-		a.appendChild(img);			
+		a.appendChild(img);	
 		li.appendChild(a);
 		a.setAttribute("data-id", Memory.imagesArr[i]);
+		a.setAttribute("href","");
 		ul.appendChild(li);
 		} //här slutar for-loopen
 				
@@ -50,13 +50,14 @@ window.onload = function() {
 		console.log(atags);
 		var countTries = 0;
 		var countScore = 0;
-		var initAtags = function(n) { //console.log("i am image number" +n);
+		var initAtags = function(n) {
 				return n;
 			};
 
 		for (var i = 0; i < atags.length; i+=1){
 		atags[i] = initAtags(i);	
 		var countingBricks = 0;
+		
 		atags[i].addEventListener("click", function(e){
 		e = e || window.event;
 		e.preventDefault();  
@@ -64,22 +65,32 @@ window.onload = function() {
 		Memory.idArray.push(e.target.parentNode.getAttribute("data-id"));
 		countingBricks +=1;
 		if (countingBricks === 2){ 
-		console.log(Memory.idArray[0], Memory.idArray[1]);
 		compareBricks(e.target); Memory.idArray.length = 0;
-		
 		countingBricks = 0;}
+		});
 		
-
-		});}
+		atags[i].addEventListener("keypress", function(e) {
+		var key = e.which || e.keyCode;
+		if (key === 13) { console.log("hej hej");
+		e = e || window.event; 
+		e.preventDefault();  
+		flipBadge(e.target);
+		Memory.idArray.push(e.target.parentNode.getAttribute("data-id"));
+		countingBricks +=1;
+		if (countingBricks === 2){ 
+		compareBricks(e.target); Memory.idArray.length = 0;
+		countingBricks = 0;}}
+		}); }
 		
 		function compareBricks(target){
 		
 		if (Memory.idArray[0] === Memory.idArray[1]){
 		Memory.flippedImages.length = 0;
-		score.innerHTML = "Score: " +(countScore +=1); 
+		score.innerHTML = "Poäng: " +(countScore +=1); }
 		if (countScore === 4) { 
-		tries.innerHTML = "Antal försök : " + (countTries +1);
-		}
+		ul.innerHTML ="";
+		tries.innerHTML = "SPELET ÄR KLART! <br /> <br />Du behövde " + (countTries +1)+" försök";
+		Memory.submit1.disabled = false;	
 		}
 		
 		if (Memory.idArray[0] !== Memory.idArray[1]){
@@ -98,13 +109,13 @@ window.onload = function() {
 		};
 		
 		
-		function flipBadge(target){ //push target to img array
+		function flipBadge(target){ 
 		Memory.flippedImages.push(target);
 		target.setAttribute("src", "pics/"+target.parentNode.getAttribute("data-id")+".jpg");
 		};
 		
 		
-		Memory.submit1.disabled = true;		
+			
 		});
 		
 		Memory.submit2.addEventListener("click", function(e){
