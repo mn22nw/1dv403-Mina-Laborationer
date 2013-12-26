@@ -12,6 +12,11 @@ window.onload = function() {
 	
 	var Form = {
 	formId:document.querySelector("#theForm"),
+	errorFn:document.querySelector(".errorm #error1"),
+	errorLn:document.querySelector(".errorm #error2"),
+	errorPostc:document.querySelector(".errorm #error3"),
+	errorEpost:document.querySelector(".errorm #error4"),
+	errorPricem:document.querySelector(".errorm #error5"),
 	idArray:[],
 	init: function(value1,value2) {
 	}};
@@ -28,17 +33,17 @@ window.onload = function() {
 	// fn.style.visibility= "hidden"; //tar bort första elementet
 	fn.focus();
 	
-	var postCodeValue = postc.value;
 	/*var str = "Hello world!";
 	var res = str.slice(1,5);*/
-	
+	Form.errorFn.innerHTML = "Detta fält får inte <br />lämnas tomt!";
 	form.onsubmit = function (e) {
-	if(postCodeReg.test(postCodeValue) ===false){
-	if(postCodeReg2.test(postCodeValue) === true)
-	console.log("felaktiskt");
+	if(postCodeReg.test(postc.value) ===false){
+	if(postCodeReg2.test(postc.value) === true){
+	var pcArray = postc.value.split("");
+	postc.value = (pcArray[0]+pcArray[1]+pcArray[2]+"-"+pcArray[3]+pcArray[4]);
+	}
 	else console.log(postc.value);
 	}
-	console.log("skickat o klart");
 	//submit.disabled = true;	
 	return false;
 	};

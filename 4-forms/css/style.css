@@ -82,11 +82,11 @@ a:hover {
   margin: 5px 0;
   margin-top:15px;
   color: #694551;
-  display:inline;
+  display:block;
 }
 /* Form */
 form p {
-  display:inline;
+  
   font-size:0.8em;
   color:#898989;
 }
@@ -125,10 +125,19 @@ form p {
   -moz-box-shadow: 0 1px #f5f5f5;
   box-shadow: 0 1px #f5f5f5;
 }
-
+.errorm {
+  width:150px; 
+  height:40px;
+  border:1px solid green; 
+  line-height:18px;
+  float:right;
+  margin-top:10px;}
+.errorm p {
+  color:red; 
+  text-align:center;}
+  
 .register input[type=text], .register input[type=password] ,.register select {
-  width: 278px;
-  display:block;
+  width: 278px; 
 }
 
 .register p.submit {
