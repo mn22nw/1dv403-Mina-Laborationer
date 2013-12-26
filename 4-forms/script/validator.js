@@ -39,7 +39,7 @@ window.onload = function() {
 	form.elements[i].onfocus = function () {
 	this.select();
 	}}
-	// -----Name and Last name----- //
+	//  -----Name and Last name----- //
 	fn.onblur = function () {
 	Form.errorFn.innerHTML = "";
 	if (fn.value ==="")
