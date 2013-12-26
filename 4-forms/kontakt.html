@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html lang="sv">
+	<head> 
+	<meta charset="utf-8" />
+	<title>Formulär</title>
+	<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+	<div  class="container">
+	
+	
+		
+	<div class="container">
+    <section class="register">
+      <h1>Fyll i din betalningsplan</h1>
+      <form method="post" 
+	  enctype="application/x-www-form-urlencoded"
+	  action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php">
+      <div class="reg_section personal_info">
+      <h3>Förnamn</h3>
+      <input type="text" name="Förnamn" value="" placeholder="Skriv in ditt förnamn">
+	  <h3>Efternamn</h3>
+	  <input type="text" name="Efternamn" value="" placeholder="Skriv in ditt efternamn">
+	  <h3>Postnummer</h3>
+	  <input type="text" name="Postnummer" value="" placeholder="Skriv in ditt postnummer">
+	  <h3>E-post</h3>
+      <input type="text" name="email" value="" placeholder="Skriv in din e-post">
+      </div>
+      
+      <div class="reg_section password">
+      <h3>Prismodell</h3>
+      <select>
+        <option  value="Låg">Låg</option>
+        <option  value="Mellan">Mellan</option>
+        <option  value="Hög">Hög</option>
+      </select>
+      </div>
+     
+      <p class="submit"><input type="submit" name="commit" value="Skicka"></p>
+      </form>
+    </section>
+	</div>
+	</body>
+</html>
