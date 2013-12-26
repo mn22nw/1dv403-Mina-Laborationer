@@ -31,10 +31,14 @@ window.onload = function() {
 	var postc = form.elements["2"];
 	var epost = form.elements["3"];
 	var pricem = form.elements["4"];
-	pricem.style.visibility= "hidden";
+	//pricem.style.visibility= "hidden";
 	// fn.style.visibility= "hidden"; //tar bort första elementet
-	fn.focus();
+	fn.focus(); 
 	
+	for (var i=0; i<form.elements.length; i+=1) {
+	form.elements[i].onfocus = function () {
+	this.select();
+	}}
 	// -----Name and Last name----- //
 	fn.onblur = function () {
 	Form.errorFn.innerHTML = "";
