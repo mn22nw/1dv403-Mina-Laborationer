@@ -139,7 +139,12 @@ form p {
 .register input[type=text], .register input[type=password] ,.register select {
   width: 278px; 
 }
-
+#submitknapp:disabled {
+color:#cacaca;
+background:#898989;
+border:none;
+box-shadow:none;
+}
 .register p.submit {
   margin-top:25px;
   width:100px;
