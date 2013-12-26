@@ -6,23 +6,46 @@ window.onload = function() {
 	NodeList.prototype.forEach = Array.prototype.forEach;
 	}
 	
-	var Memory= {
-	submit1:document.querySelector("#submit1"),
-	submit2:document.querySelector("#submit2"),
+	
+	
+	//st.replaceAll("\\s+","")
+	
+	var Form = {
+	formId:document.querySelector("#theForm"),
 	idArray:[],
-	imagesArr:[], 
-	flippedImages:[],
 	init: function(value1,value2) {
-	Memory.imagesArr = new RandomGenerator.getPictureArray(value1,value2);
+	}};
+	
+	var postCodeReg = /^(\d{3})-(\d{2})$/;//funkar!
+	var postCodeReg2 =  /^\d{5}$/;   //funkar!
+	var form = Form.formId;
+	var fn = form.elements["0"];
+	var ln = form.elements["1"];
+	var postc = form.elements["2"];
+	var epost = form.elements["3"];
+	var pricem = form.elements["4"];
+	pricem.style.visibility= "hidden";
+	// fn.style.visibility= "hidden"; //tar bort första elementet
+	fn.focus();
+	
+	var postCodeValue = postc.value;
+	/*var str = "Hello world!";
+	var res = str.slice(1,5);*/
+	
+	form.onsubmit = function (e) {
+	if(postCodeReg.test(postCodeValue) ===false){
+	if(postCodeReg2.test(postCodeValue) === true)
+	console.log("felaktiskt");
+	else console.log(postc.value);
 	}
+	console.log("skickat o klart");
+	//submit.disabled = true;	
+	return false;
 	};
-	var ul = document.querySelector("#container ul");
-	var score = document.querySelector("#container #score"); 
-	var tries = document.querySelector("#container #tries");
-	var mask = document.querySelector("#container #mask");
-	score.innerHTML = "Poäng: ";
+	
+	//score.innerHTML = "Poäng: ";
 	// ------------------------------------------------------------------------------
-		Memory.submit1.addEventListener("click", function(e){
+		/*Memory.submit1.addEventListener("click", function(e){
 		e = e || window.event;
 		e.preventDefault(); 
 		window.scrollTo(0,500);
@@ -98,40 +121,6 @@ window.onload = function() {
 		if (countingBricks === 2){ 
 		compareBricks(e.target); Memory.idArray.length = 0;
 		countingBricks = 0;}}
-		});*/ }
-		
-		function compareBricks(target){
-		
-		if (Memory.idArray[0] === Memory.idArray[1]){
-		Memory.flippedImages.length = 0;
-		score.innerHTML = "Poäng: " +(countScore +=1); }
-		setTimeout (function() {
-		if ((countScore === 4 && rows === 2) || (countScore === 8 && rows === 4)) { 
-		window.scrollTo(0,100);
-		ul.innerHTML ="";
-		tries.innerHTML = "SPELET ÄR KLART! <br /> <br />Du behövde " + (countTries +1)+" försök";
-		Memory.submit1.disabled = false;	
-		Memory.submit2.disabled = false;	
-		}},500);
-		
-		if (Memory.idArray[0] !== Memory.idArray[1]){
-		mask.style.visibility= "visible";
-		setTimeout (function() {
-		Memory.flippedImages[0].setAttribute("src", "pics/qm.jpg");	
-		Memory.flippedImages[1].setAttribute("src", "pics/qm.jpg");	
-		Memory.flippedImages.splice(0, 2);
-		}, 1000);
-		setTimeout (function() {
-		mask.style.visibility= "hidden";
-		}, 1000); }		
-		countTries += 1;
-		};
-			
-		function flipBadge(target){ 
-		Memory.flippedImages.push(target);
-		target.setAttribute("src", "pics/"+target.parentNode.getAttribute("data-id")+".jpg");
-		}; 
-		};
-			
-}
+		});*/ };
+
 //http://stackoverflow.com/questions/15643842/createelement-inside-a-for-loop-just-replaces-created-item

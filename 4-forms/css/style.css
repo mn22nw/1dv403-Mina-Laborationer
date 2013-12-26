@@ -82,8 +82,14 @@ a:hover {
   margin: 5px 0;
   margin-top:15px;
   color: #694551;
+  display:inline;
 }
 /* Form */
+form p {
+  display:inline;
+  font-size:0.8em;
+  color:#898989;
+}
 .register {
   position: relative;
   margin-top:20px;
@@ -122,6 +128,7 @@ a:hover {
 
 .register input[type=text], .register input[type=password] ,.register select {
   width: 278px;
+  display:block;
 }
 
 .register p.submit {
