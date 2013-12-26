@@ -25,6 +25,7 @@ window.onload = function() {
 		Memory.submit1.addEventListener("click", function(e){
 		e = e || window.event;
 		e.preventDefault(); 
+		window.scrollTo(0,500);
 		Memory.submit1.disabled = true;	
 		Memory.submit2.disabled = false;
 		generateBricks(2,4);
@@ -33,6 +34,7 @@ window.onload = function() {
 		Memory.submit2.addEventListener("click", function(e){
 		e = e || window.event;
 		e.preventDefault(); 
+		window.scrollTo(0,500);
 		Memory.submit2.disabled = true;	
 		Memory.submit1.disabled = false;	
 		generateBricks(4,4);
@@ -57,7 +59,7 @@ window.onload = function() {
 		a.appendChild(img);	
 		li.appendChild(a);
 		a.setAttribute("data-id", Memory.imagesArr[i]);
-		a.setAttribute("href","");
+		a.setAttribute('href', "#");
 		ul.appendChild(li);
 		} //här slutar for-loopen
 				
@@ -75,8 +77,9 @@ window.onload = function() {
 		
 		atags[i].addEventListener("click", function(e){
 		e = e || window.event;
+		console.log("hej");
 		e.preventDefault();  
-		flipBadge(e.target);
+		flipBadge(e.target); //verkar inte fungera med e.target?
 		Memory.idArray.push(e.target.parentNode.getAttribute("data-id"));
 		countingBricks +=1;
 		if (countingBricks === 2){ 
@@ -84,9 +87,9 @@ window.onload = function() {
 		countingBricks = 0;}
 		});
 		//FUNKAR INTE MED ENTER?!
-		atags[i].addEventListener("keypress", function(e) {
+		/*atags[i].addEventListener("click", function(e) {
 		var key = e.which || e.keyCode;
-		if (key === 13) { 
+		if (key === 13)  console.log("Hey there");
 		e = e || window.event; 
 		e.preventDefault();  
 		flipBadge(e.target);
@@ -95,7 +98,7 @@ window.onload = function() {
 		if (countingBricks === 2){ 
 		compareBricks(e.target); Memory.idArray.length = 0;
 		countingBricks = 0;}}
-		}); }
+		});*/ }
 		
 		function compareBricks(target){
 		
@@ -104,6 +107,7 @@ window.onload = function() {
 		score.innerHTML = "Poäng: " +(countScore +=1); }
 		setTimeout (function() {
 		if ((countScore === 4 && rows === 2) || (countScore === 8 && rows === 4)) { 
+		window.scrollTo(0,100);
 		ul.innerHTML ="";
 		tries.innerHTML = "SPELET ÄR KLART! <br /> <br />Du behövde " + (countTries +1)+" försök";
 		Memory.submit1.disabled = false;	
