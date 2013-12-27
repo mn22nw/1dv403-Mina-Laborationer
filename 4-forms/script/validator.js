@@ -13,16 +13,12 @@ window.onload = function() {
 	
 	var Form = {
 	formId:document.querySelector("#theForm"),
-	errorFn:document.querySelector(".errorm #error1"),
-	errorLn:document.querySelector(".errorm #error2"),
-	errorPostc:document.querySelector(".errorm #error3"),
-	errorEpost:document.querySelector(".errorm #error4"),
-	errorPricem:document.querySelector(".errorm #error5"),
+	errorArray:document.querySelectorAll(".errorm"),
 	submit:document.querySelector("#submitknapp"),
-	idArray:[],
 	init: function(value1,value2) {
 	}};
 	
+
 	//var postCodeReg2 = /^(\d{3})-(\d{2})$/;//funkar!
 	var postCodeReg =  /^\d{5}$/;   //funkar!
 	var form = Form.formId;
@@ -31,30 +27,39 @@ window.onload = function() {
 	var postc = form.elements["2"];
 	var epost = form.elements["3"];
 	var pricem = form.elements["4"];
+	
 	//pricem.style.visibility= "hidden";
 	// fn.style.visibility= "hidden"; //tar bort första elementet
 	fn.focus(); 
 	
+	
 	for (var i=0; i<form.elements.length; i+=1) {
 	form.elements[i].onfocus = function () {
 	this.select();
-	}}
-	//  -----Name and Last name----- //
+	}};
+	
+	
+	// -----Name and Last name----- //
 	fn.onblur = function () {
-	Form.errorFn.innerHTML = "";
-	if (fn.value ==="")
-	Form.errorFn.innerHTML = "Detta fält får inte <br />lämnas tomt!";
+	if (fn.value ===""|| fn.value === null){
+	var textNode1 = document.createTextNode("Detta fält får inte lämnas tomt!");
+	var errorm = document.createElement("p");
+	errorm.appendChild(textNode1);
+	Form.errorArray[0].appendChild(errorm);	}
 	}
+	
 	ln.onblur = function () {
-	Form.errorLn.innerHTML = "";
-	if (ln.value ==="")
-	Form.errorLn.innerHTML = "Detta fält får inte <br />lämnas tomt!";
+	if (ln.value ==="" || ln.value === null){
+	var textNode2 = document.createTextNode("Detta fält får inte lämnas tomt!");
+	var errorm1 = document.createElement("p");
+	errorm1.appendChild(textNode2);
+	Form.errorArray[1].appendChild(errorm1);	}
 	}
 	
 	postc.onblur = function () {
-	Form.errorPostc.innerHTML = "";
-	if (postc.value ==="")
-	Form.errorPostc.innerHTML = "Detta fält får inte <br />lämnas tomt!";
+	//Form.errorPostc.innerHTML = "";
+	//if (postc.value ==="")
+	//Form.errorPostc.innerHTML = "Detta fält får inte <br />lämnas tomt!";
 	}
 	form.onsubmit = function (e) {
 	// -----Postcode----- //
