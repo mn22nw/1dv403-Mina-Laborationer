@@ -20,7 +20,8 @@ window.onload = function() {
 	
 
 	//var postCodeReg2 = /^(\d{3})-(\d{2})$/;//funkar!
-	var postCodeReg =  /^\d{5}$/;   //funkar!
+	//var postCodeReg2 =  /^\d{5}$/;   //funkar!
+	var postCodeReg = /^\w{0,2}\s{0,1}\d{3,3}-{0,1}\s{0,1}\d{2,2}$/;
 	var form = Form.formId;
 	var fn = form.elements["0"];
 	var ln = form.elements["1"];
@@ -33,37 +34,53 @@ window.onload = function() {
 	fn.focus(); 
 	
 	
-	for (var i=0; i<form.elements.length; i+=1) {
+	for (var i=0; i<form.elements.length; i+=1) {   
 	form.elements[i].onfocus = function () {
 	this.select();
 	}};
 	
 	
 	// -----Name and Last name----- //
+	var errorm = document.createElement("p");
 	fn.onblur = function () {
+	errorm.textContent ="";
 	if (fn.value ===""|| fn.value === null){
 	var textNode1 = document.createTextNode("Detta fält får inte lämnas tomt!");
-	var errorm = document.createElement("p");
 	errorm.appendChild(textNode1);
-	Form.errorArray[0].appendChild(errorm);	}
+	Form.errorArray[0].appendChild(errorm);	
+	//Form.errorArray[0].removeChild(Form.errorArray[0].childNodes[0]);
+	} 
 	}
 	
-	ln.onblur = function () {
-	if (ln.value ==="" || ln.value === null){
-	var textNode2 = document.createTextNode("Detta fält får inte lämnas tomt!");
 	var errorm1 = document.createElement("p");
+	ln.onblur = function () {
+	errorm1.textContent ="";
+	if (ln.value ==="" || ln.value === null){	
+	var textNode2 = document.createTextNode("Detta fält får inte lämnas tomt!");
 	errorm1.appendChild(textNode2);
-	Form.errorArray[1].appendChild(errorm1);	}
+	Form.errorArray[1].appendChild(errorm1);}
 	}
 	
-	postc.onblur = function () {
-	//Form.errorPostc.innerHTML = "";
-	//if (postc.value ==="")
-	//Form.errorPostc.innerHTML = "Detta fält får inte <br />lämnas tomt!";
-	}
-	form.onsubmit = function (e) {
 	// -----Postcode----- //
+	var errorm2 = document.createElement("p");
+	postc.onblur = function () {
+	errorm2.textContent ="";
+	if (ln.value ==="" || ln.value === null){	
+	var textNode3 = document.createTextNode("Detta fält får inte lämnas tomt!");
+	errorm2.appendChild(textNode3);
+	Form.errorArray[2].appendChild(errorm2);}
 	
+	if (postc.value !=="" && postc.value!== null && postCodeReg.test(postc.value) === false)
+	console.log(r);
+	/*if (isNaN(postc.value)){  // om det inte är ett nummer blir det sant
+	errorm2.textContent =""; 
+	var textNode3 = document.createTextNode("Du måste ange ett korrekt postnummer!");
+	errorm2.appendChild(textNode3);
+	Form.errorArray[2].appendChild(errorm2); console.log(r);
+	}*/}
+	
+	
+	form.onsubmit = function (e) {
 	Form.submit.disabled = true;
 	if(postCodeReg.test(postc.value) ===true){
 	var pcArray = postc.value.split("");
