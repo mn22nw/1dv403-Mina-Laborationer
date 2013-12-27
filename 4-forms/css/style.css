@@ -140,6 +140,38 @@ form p {
 .register input[type=text], .register input[type=password] ,.register select {
   width: 278px; 
 }
+
+#popup {			position: absolute;
+				width:450px;
+				height:400px;
+				top: 10%;
+				left: 50%;
+				margin-left:-280px;
+				z-index: 9999; 
+				background-color: #FFF;
+				border: 5px solid #2f0916;
+				padding:45px;}
+#popup  p {
+	margin-top:20px;
+	text-align:justify;
+}
+#cancel {
+	padding:10px;
+	width:50px;
+	background:#2f0916;
+	color:#FFF;
+	margin:15px;
+	float:right;
+	margin-top:-30px;
+	margin-right:-20px;
+	cursor:pointer;
+	border-radius:5px;
+}
+#cancel p {
+	margin-top:0;
+	text-align:center;
+}
+
 #submitknapp:disabled {
 color:#cacaca;
 background:#898989;

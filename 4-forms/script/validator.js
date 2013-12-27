@@ -115,16 +115,30 @@ window.onload = function() {
     popup.className = 'popup';
     popup.id = 'popup';
     var cancel = document.createElement('div');
-    cancel.className = 'cancel';
+    cancel.id = 'cancel';
 	var textNodeCancel = document.createTextNode("Stäng");
 	var pCancel = document.createElement('p');
 	pCancel.appendChild(textNodeCancel);
     cancel.appendChild(pCancel);
     cancel.onclick = function (e) { popup.parentNode.removeChild(popup) };
-    var message = document.createElement('span');
-    message.innerHTML = "This is a test message";
-    popup.appendChild(message);                                    
-    popup.appendChild(cancel);
+	
+    var firstName = document.createElement('p');
+	var textNodeFn = document.createTextNode("Förnamn: "+fn.value);
+	firstName.appendChild(textNodeFn);
+	
+	var lastName = document.createElement('p');
+	var textNodeLn = document.createTextNode("Efternamn: "+ln.value);
+	lastName.appendChild(textNodeLn);
+	
+	var pPostCode = document.createElement('p');
+	var textNodePc = document.createTextNode("Postnummer: "+postc.value);
+	pPostCode.appendChild(textNodePc);
+	
+	popup.appendChild(cancel);
+    popup.appendChild(firstName);  
+	popup.appendChild(lastName);
+	popup.appendChild(pPostCode);	
+    
     document.body.appendChild(popup);
 }
 	
@@ -146,4 +160,4 @@ window.onload = function() {
 	};
 	
 
-//http://stackoverflow.com/questions/15643842/createelement-inside-a-for-loop-just-replaces-created-item
+//http://stackoverflow.com/questions/11542822/javascript-onclick-createelement-div-viz-popup-box
