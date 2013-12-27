@@ -112,15 +112,40 @@ window.onload = function() {
 	// ---Popup--- //
 	function popUp(){
     var popup = document.createElement('div');
-    popup.className = 'popup';
     popup.id = 'popup';
-    var cancel = document.createElement('div');
+	var mask = document.createElement('div');
+    mask.id = 'mask';
+    var exitButton = document.createElement('div');
+    exitButton.id = 'exitButton';
+	var textNodeExitButton = document.createTextNode("Stäng");
+	var pExitButton = document.createElement('p');
+	pExitButton.appendChild(textNodeExitButton);
+    exitButton.appendChild(pExitButton);
+    exitButton.onclick = function (e) { 
+	popup.parentNode.removeChild(popup) 
+	mask.parentNode.removeChild(mask) };
+	
+	
+			//---Cancel---//
+	var cancel = document.createElement('div');
     cancel.id = 'cancel';
-	var textNodeCancel = document.createTextNode("Stäng");
+	var textNodeCancel = document.createTextNode("Avbryt");
 	var pCancel = document.createElement('p');
 	pCancel.appendChild(textNodeCancel);
     cancel.appendChild(pCancel);
     cancel.onclick = function (e) { popup.parentNode.removeChild(popup) };
+			//--Confirm--//
+	var Confirm = document.createElement('div');
+    Confirm.id = 'Confirm';
+	var textNodeConfirm = document.createTextNode("Avbryt");
+	var pConfirm = document.createElement('p');
+	pConfirm.appendChild(textNodeConfirm);
+    Confirm.appendChild(pConfirm);
+    Confirm.onclick = function (e) { popup.parentNode.removeChild(popup) };
+	
+	var h2= document.createElement('h2');
+	var textNodeH2 = document.createTextNode("Vänligen bekräfta ditt köp");
+	h2.appendChild(textNodeH2);
 	
     var firstName = document.createElement('p');
 	var textNodeFn = document.createTextNode("Förnamn: "+fn.value);
@@ -134,12 +159,24 @@ window.onload = function() {
 	var textNodePc = document.createTextNode("Postnummer: "+postc.value);
 	pPostCode.appendChild(textNodePc);
 	
-	popup.appendChild(cancel);
+	var pEpost = document.createElement('p');
+	var textNodeEp = document.createTextNode("E-post: "+epost.value);
+	pEpost.appendChild(textNodeEp);
+	
+	var pPrism = document.createElement('p');
+	var textNodePm = document.createTextNode("Prismodell: "+pricem.value);
+	pPrism.appendChild(textNodePm);
+	
+	popup.appendChild(exitButton);
+	popup.appendChild(h2);
     popup.appendChild(firstName);  
 	popup.appendChild(lastName);
-	popup.appendChild(pPostCode);	
-    
+	popup.appendChild(pPostCode);
+	popup.appendChild(pEpost);
+	popup.appendChild(pPrism);	
+		   
     document.body.appendChild(popup);
+	document.body.appendChild(mask);
 }
 	
 	// -----Submit form----- //
