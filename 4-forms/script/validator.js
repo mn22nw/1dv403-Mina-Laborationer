@@ -8,20 +8,21 @@ window.onload = function() {
 	
 	var r = "RUMPLE";
 	
-	
-	//st.replaceAll("\\s+","")
-	
 	var Form = {
 	formId:document.querySelector("#theForm"),
 	errorArray:document.querySelectorAll(".errorm"),
 	submit:document.querySelector("#submitknapp"),
-	init: function(value1,value2) {
+	init: function() {
+	var replacePc = postc.value.replace(/\s/g,""); 
+	var re = replacePc.replace('SE','');
+	
+	if(postCodeReg2.test(re) ===true){
+	var pcArray = re.split("");
+	postc.value = (pcArray[0]+pcArray[1]+pcArray[2]+" "+pcArray[3]+pcArray[4]);
+	console.log(postc.value);
+	}
 	}};
 	
-
-	//var postCodeReg2 = /^(\d{3})-(\d{2})$/;//funkar!
-	//var postCodeReg2 =  /^\d{5}$/;   //funkar!
-	var postCodeReg = /^\w{0,2}\s{0,1}\d{3,3}-{0,1}\s{0,1}\d{2,2}$/;
 	var form = Form.formId;
 	var fn = form.elements["0"];
 	var ln = form.elements["1"];
@@ -29,18 +30,17 @@ window.onload = function() {
 	var epost = form.elements["3"];
 	var pricem = form.elements["4"];
 	
-	//pricem.style.visibility= "hidden";
-	// fn.style.visibility= "hidden"; //tar bort första elementet
 	fn.focus(); 
 	
-	
-	for (var i=0; i<form.elements.length; i+=1) {   
+	for (var i=0; i<form.elements.length-2; i+=1) {   
 	form.elements[i].onfocus = function () {
 	this.select();
 	}};
 	
 	
-	// -----Name and Last name----- //
+	// -----First name----- //
+	var checkIfStr = /^\w{1,120}$/;
+	
 	var errorm = document.createElement("p");
 	fn.onblur = function () {
 	errorm.textContent ="";
@@ -50,8 +50,14 @@ window.onload = function() {
 	Form.errorArray[0].appendChild(errorm);	
 	//Form.errorArray[0].removeChild(Form.errorArray[0].childNodes[0]);
 	} 
+	if (fn.value !=="" && fn.value!== null && checkIfStr.test(fn.value) === false){
+	errorm.textContent =""; 
+	var textNode1 = document.createTextNode("Du måste ange ett giltigt förnamn!");
+	errorm.appendChild(textNode1);
+	Form.errorArray[0].appendChild(errorm);
 	}
-	
+	};
+	// ----Last name----- //
 	var errorm1 = document.createElement("p");
 	ln.onblur = function () {
 	errorm1.textContent ="";
@@ -59,13 +65,22 @@ window.onload = function() {
 	var textNode2 = document.createTextNode("Detta fält får inte lämnas tomt!");
 	errorm1.appendChild(textNode2);
 	Form.errorArray[1].appendChild(errorm1);}
-	}
+	
+	if (ln.value !=="" && ln.value!== null && checkIfStr.test(ln.value) === false){
+	errorm1.textContent =""; 
+	var textNode2 = document.createTextNode("Du måste ange ett giltigt efternamn!");
+	errorm1.appendChild(textNode2);
+	Form.errorArray[1].appendChild(errorm1);
+	}};
 	
 	// -----Postcode----- //
+	var postCodeReg = /^\w{0,2}\s{0,1}\d{3,3}-{0,1}\s{0,1}\d{2,2}$/;
+	var postCodeReg2 =  /^\d{5}$/; 
 	var errorm2 = document.createElement("p");
+	
 	postc.onblur = function () {
 	errorm2.textContent ="";
-	if (ln.value ==="" || ln.value === null){	
+	if (postc.value ==="" || postc.value === null){	
 	var textNode3 = document.createTextNode("Detta fält får inte lämnas tomt!");
 	errorm2.appendChild(textNode3);
 	Form.errorArray[2].appendChild(errorm2);}
@@ -75,24 +90,58 @@ window.onload = function() {
 	var textNode3 = document.createTextNode("Du måste ange ett korrekt postnummer!");
 	errorm2.appendChild(textNode3);
 	Form.errorArray[2].appendChild(errorm2);
-	}
-	/*if (isNaN(postc.value)){  // om det inte är ett nummer blir det sant
-	errorm2.textContent =""; 
-	var textNode3 = document.createTextNode("Du måste ange ett korrekt postnummer!");
-	errorm2.appendChild(textNode3);
-	Form.errorArray[2].appendChild(errorm2);
-	}*/}
+	}};
 	
+	// -----Email----- //
+	var errorm3 = document.createElement("p");
+	var emailReg = /^[0-9a-z._-]{1,64}@[a-z]{1,}?\.[a-z]{2,}$/im;	
+	epost.onblur = function () {
+	errorm3.textContent ="";
+	if (epost.value ==="" || epost.value === null){	
+	var textNode4 = document.createTextNode("Detta fält får inte lämnas tomt!");
+	errorm3.appendChild(textNode4);
+	Form.errorArray[3].appendChild(errorm3);}
 	
+	if (epost.value !=="" && epost.value!== null && emailReg.test(epost.value) === false){
+	errorm3.textContent =""; 
+	var textNode4 = document.createTextNode("Du måste ange en korrekt email-adress!");
+	errorm3.appendChild(textNode4);
+	Form.errorArray[3].appendChild(errorm3);
+	}};
+	
+	// ---Popup--- //
+	function popUp(){
+    var popup = document.createElement('div');
+    popup.className = 'popup';
+    popup.id = 'popup';
+    var cancel = document.createElement('div');
+    cancel.className = 'cancel';
+	var textNodeCancel = document.createTextNode("Stäng");
+	var pCancel = document.createElement('p');
+	pCancel.appendChild(textNodeCancel);
+    cancel.appendChild(pCancel);
+    cancel.onclick = function (e) { popup.parentNode.removeChild(popup) };
+    var message = document.createElement('span');
+    message.innerHTML = "This is a test message";
+    popup.appendChild(message);                                    
+    popup.appendChild(cancel);
+    document.body.appendChild(popup);
+}
+	
+	// -----Submit form----- //
 	form.onsubmit = function (e) {
-	Form.submit.disabled = true;
-	if(postCodeReg.test(postc.value) ===true){
-	var pcArray = postc.value.split("");
-	postc.value = (pcArray[0]+pcArray[1]+pcArray[2]+" "+pcArray[3]+pcArray[4]);
-	console.log(postc.value);
-	}
-	console.log(postc.value);	
-	return false;
+	//Form.submit.disabled = true;
+	
+	Form.init(); popUp();
+	if (fn.value ===""|| fn.value === null || ln.value ==="" || ln.value === null){ console.log(r);
+	return false;}
+	if (postc.value ==="" || postc.value=== null || postCodeReg.test(postc.value) === false){ console.log("pos");
+	return false;}
+	if (epost.value ==="" || epost.value=== null || emailReg.test(epost.value) === false){ console.log("Lol");
+	return false;}
+	else { Form.submit.value = "Skickar...";
+	
+	return false; }
 	};
 	};
 	

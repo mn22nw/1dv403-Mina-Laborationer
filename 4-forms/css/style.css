@@ -126,14 +126,15 @@ form p {
   box-shadow: 0 1px #f5f5f5;
 }
 .errorm {
-  width:150px; 
+  width:130px; 
   height:40px;
-  border:1px solid green; 
   line-height:18px;
   float:right;
-  margin-top:10px;}
+  margin-top:7px;
+  margin-right:20px;
+  }
 .errorm p {
-  color:red; 
+  color:#2f0916;
   text-align:center;}
   
 .register input[type=text], .register input[type=password] ,.register select {
