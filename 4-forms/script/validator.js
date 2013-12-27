@@ -70,13 +70,17 @@ window.onload = function() {
 	errorm2.appendChild(textNode3);
 	Form.errorArray[2].appendChild(errorm2);}
 	
-	if (postc.value !=="" && postc.value!== null && postCodeReg.test(postc.value) === false)
-	console.log(r);
+	if (postc.value !=="" && postc.value!== null && postCodeReg.test(postc.value) === false){
+	errorm2.textContent =""; 
+	var textNode3 = document.createTextNode("Du måste ange ett korrekt postnummer!");
+	errorm2.appendChild(textNode3);
+	Form.errorArray[2].appendChild(errorm2);
+	}
 	/*if (isNaN(postc.value)){  // om det inte är ett nummer blir det sant
 	errorm2.textContent =""; 
 	var textNode3 = document.createTextNode("Du måste ange ett korrekt postnummer!");
 	errorm2.appendChild(textNode3);
-	Form.errorArray[2].appendChild(errorm2); console.log(r);
+	Form.errorArray[2].appendChild(errorm2);
 	}*/}
 	
 	
