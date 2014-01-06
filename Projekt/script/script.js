@@ -2,6 +2,9 @@
 
 window.onload = function(){
 
+	var icon1 = new Icon("pics/icon.png");
+	icon1.createIcon();
+
 	var popUpWindow = document.querySelector('#window'); // element to make resizable
 	var div = document.querySelector('#window');
 
