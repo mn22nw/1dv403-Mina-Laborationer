@@ -1,0 +1,38 @@
+﻿@charset "UTF-8";
+
+	body {		overflow-y: scroll;	
+				font-family:"Georgia", sans-serif;
+				padding :0; 
+				margin:0;
+			}
+	h2 {			padding-top:10px;}
+	
+	
+		/** Anger sidansstorlek och placering*
+---------------------------------------------------------------------- */				
+	#page {		width:994px; /* 1024 - padding*/
+				height:610px;  /* 640 - padding*/
+				margin:0 auto;
+				border:15px solid #000;
+				background:#000;
+				background-image: url('../pics/bakgrund.jpg');
+				border-radius:10px;
+	}
+	#taskbar 
+	.mini-search {margin:0;}
+	.resizer {
+				border: 10px solid green;
+				width:25px;
+				height:25px;
+	}
+	#window { 	min-width: 400px;
+				min-height:200px;
+				max-width:1024px;
+				max-height:550px;
+				width:500px;
+				height:500px;
+				background:red;
+				cursor:default; 
+				
+	}
+
