@@ -2,21 +2,32 @@
 window.onload = function() {
 
 	function changeBackground(url) {   //kanske byt placering på denna dårå
-		this.style.backgroundImage = url;	
+	this.style.backgroundImage = url;	
 	}
 	// skapar namnrymd (tomt objekt som man fyller på med funktioner man vill nyttja)
+	
 	var WEBDESK = WEBDESK || {};
 	
 	WEBDESK.util = WEBDESK.util || {};
 	
-	WEBDESK.util.popUpImg = Icon.prototype.createIcon();
+	WEBDESK.util.renderIcon = function(url) { 
+	
+	var icon1 = new Icon("pics/icon.png");  //här ska url vara när jag kommer på hur man gör
+		icon1.createIcon();
+	};
+	
+	WEBDESK.util.renderIcon();
+	
+	
 	
 	var windowMaker = {
 		run: function() { 
 		var icon1 = new Icon("pics/icon.png");
 		icon1.createIcon();
+		
 	
-	WEBDESK.util.popUpImg();
+	
+	
 	
 	
 		var popUpWindow = document.querySelector('#window'); // element to make resizable

@@ -1,28 +1,6 @@
 ﻿"use strict";
 
-	function Icon (url)
-{
-this.getUrl = function () { return url; };
-this.setUrl = function (_url) { url = _url; };
 
-this.setUrl(url);
-};
- 
-Icon.prototype.createIcon = function() {
-
-	var taskbar = document.querySelector('#taskbar');
-	var icon = document.createElement('a');
-	icon.setAttribute("href", "#");
-	icon.addEventListener("click", function(e){
-	e.preventDefault();
-	//changeBackground.call(desktop,"url('pics/taskbar.jpg')"); 
-	});
-	icon.className = "icon";
-	taskbar.appendChild(icon);
-	var desktop = document.querySelector("#page");
-
-
-};
 
 function PopUpFoundation(width, height) {
 	this.width = width;
@@ -77,4 +55,29 @@ PopUpImages.prototype = new PopUpFoundation();
 //lägg till nya funktioner på PopUp prototype
 PopUpImages.prototype.somethingsomething = function(){
 // om den behöver ha egna egenskaper
+};
+
+
+	function Icon (url)
+{
+this.getUrl = function () { return url; };
+this.setUrl = function (_url) { url = _url; };
+
+this.setUrl(url);
+};
+ 
+Icon.prototype.createIcon = function() {
+
+	var taskbar = document.querySelector('#taskbar');
+	var icon = document.createElement('a');
+	icon.setAttribute("href", "#");
+	icon.addEventListener("click", function(e){
+	e.preventDefault();
+	//changeBackground.call(desktop,"url('pics/taskbar.jpg')"); 
+	});
+	icon.className = "icon";
+	taskbar.appendChild(icon);
+	var desktop = document.querySelector("#page");
+
+
 };
