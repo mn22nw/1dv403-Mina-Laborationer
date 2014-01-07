@@ -16,7 +16,7 @@
 				height:610px;  /* 640 - padding*/
 				margin:0 auto;
 				border:15px solid #3577B7;
-				background:#3577B7;
+				background:#F2F2F2;
 				background-image: url('../pics/bakgrund.jpg');
 				border-radius:10px;
 				box-shadow: 5px 5px 3px #888888;
@@ -31,27 +31,41 @@
 				border-top:10px solid #3577B7;
 			 
 	}
-
+	
 	.icon {
 				margin: 0 10px;
 				cursor:pointer;
-				border:1px solid green;
-				width:50px;
+				width:80px;
+				height:80px;
+				display:block;
 				background-image: url('../pics/icon1.png');
+	}
+	
+		/** Popup fönster *
+---------------------------------------------------------------------- */	
+	.headerbar{ 
+				min-width: 300px;
+				min-height:40px;
+				max-width:1024px;
+				max-height:40px;
+				border:1px solid green;
+	}
+	
+	.load {
+				
 	}
 	.resizer {
 				border: 10px solid green;
 				width:25px;
 				height:25px;
 	}
-	#window { 	min-width: 400px;
+	.window { 	min-width: 300px;
 				min-height:200px;
 				max-width:1024px;
 				max-height:550px;
 				width:500px;
 				height:500px;
 				background:#079FDB;
-				cursor:default; 
-				
+				cursor:default; 				
 	}
 
