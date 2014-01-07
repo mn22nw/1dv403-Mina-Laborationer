@@ -47,6 +47,7 @@ PopUpFoundation.prototype.render = function(){
 //Med denna kan jag skapa flera fönster ju (som en mall)och den ärver från popup foundation //
 function PopUpImages () {   
 	PopUpFoundation.call(this,300,400);
+	console.log("haj");
 };
 
 //PopUp ärver från PopUpFoundation
@@ -66,15 +67,19 @@ this.setUrl = function (_url) { url = _url; };
 this.setUrl(url);
 };
  
-Icon.prototype.createIcon = function() {
-
+Icon.prototype.createIcon = function(url, window) {
 	var taskbar = document.querySelector('#taskbar');
 	var icon = document.createElement('a');
 	icon.setAttribute("href", "#");
+
+	icon.style.backgroundImage=	"url('" + url +"')" ;
+	
 	icon.addEventListener("click", function(e){
-	e.preventDefault();
-	//changeBackground.call(desktop,"url('pics/taskbar.jpg')"); 
-	});
+			e.preventDefault();
+			window();
+			//changeBackground.call(desktop,"url('pics/taskbar.jpg')"); 
+			});
+			
 	icon.className = "icon";
 	taskbar.appendChild(icon);
 	var desktop = document.querySelector("#page");

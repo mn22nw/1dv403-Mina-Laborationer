@@ -38,7 +38,8 @@
 				width:80px;
 				height:80px;
 				display:block;
-				background-image: url('../pics/icon1.png');
+				float:left;
+				
 	}
 	
 		/** Popup fönster *
@@ -59,7 +60,7 @@
 				width:25px;
 				height:25px;
 	}
-	.window { 	min-width: 300px;
+	.popup{ 	min-width: 300px;
 				min-height:200px;
 				max-width:1024px;
 				max-height:550px;

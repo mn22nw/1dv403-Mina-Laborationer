@@ -4,34 +4,38 @@ window.onload = function() {
 	function changeBackground(url) {   //kanske byt placering på denna dårå
 	this.style.backgroundImage = url;	
 	}
-	// skapar namnrymd (tomt objekt som man fyller på med funktioner man vill nyttja)
-	
+	// skapar namnrymd (tomt objekt som man fyller på med funktioner man vill nyttja)	
 	var WEBDESK = WEBDESK || {};
 	
 	WEBDESK.util = WEBDESK.util || {};
 	
-	WEBDESK.util.renderIcon = function(url) { 
-	
-	var icon1 = new Icon("pics/icon.png");  //här ska url vara när jag kommer på hur man gör
-		icon1.createIcon();
+	WEBDESK.util.renderPopUpImages = function() { 
+			
+			var ImagesWindow = new PopUpImages(); 
+			ImagesWindow.render();
 	};
 	
-	WEBDESK.util.renderIcon();
+	
+	WEBDESK.util.renderIcon = function(url ) { 
+	
+			var icon = new Icon(); 
+			icon.createIcon(url, WEBDESK.util.renderPopUpImages);
+			
+			
+	};
+	
+	WEBDESK.util.renderIcon("pics/icon.png" );
+	WEBDESK.util.renderIcon("pics/icon2.png" );
+	
+	
 	
 	
 	
 	var windowMaker = {
 		run: function() { 
-		var icon1 = new Icon("pics/icon.png");
-		icon1.createIcon();
-		
-	
-	
-	
-	
-	
-		var popUpWindow = document.querySelector('#window'); // element to make resizable
-		var div = document.querySelector('#window');
+
+		var popUpWindow = document.querySelector('.window'); // element to make resizable
+		var div = document.querySelector('.window');
 
 	popUpWindow.addEventListener('click', function init() {
 	/*p.removeEventListener('click', init, false);
