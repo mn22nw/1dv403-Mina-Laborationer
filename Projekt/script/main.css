@@ -44,6 +44,10 @@
 	
 		/** Popup fönster *
 ---------------------------------------------------------------------- */	
+	#container{
+				position:relative;
+	}
+	
 	.headerbar{ 
 				min-width: 300px;
 				min-height:40px;
@@ -67,6 +71,9 @@
 				width:500px;
 				height:500px;
 				background:#079FDB;
-				cursor:default; 				
+				cursor:default; 
+				position:absolute;
+				float:left;
+				top:15px;
 	}
 
