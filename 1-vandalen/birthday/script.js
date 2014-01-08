@@ -3,8 +3,9 @@
 window.onload = function(){
 
 	var birthday = function(date){
-	
-		var validateInput = /(\d{4})[-\/](\d{2})[-\/](\d{2})/.exec(date);
+		
+			
+		var validateInput = /(\d{4})[-\/](\d{2})[-\/](\d{2})/.exec(date)
 		
 	if (validateInput == null)
          {
@@ -13,17 +14,40 @@ window.onload = function(){
 		 
 	var splitDate= validateInput.toString();	
 	var arrDate= splitDate.split(",");
-	var setBirthday = new Date(arrDate[1],arrDate[2] - 1,arrDate[3])
-	var currdate = new Date();
+	
+	var currdate = new Date();	
+	var currentYear = currdate.getFullYear();
+	console.log(currentYear + "hej");
+	
+	var setBirthday = new Date(arrDate[1],arrDate[2] - 1,arrDate[3]);
+	var newBirthday = new Date(currentYear ,arrDate[2] - 1,arrDate[3]); 
+	console.log(newBirthday +"bnew bth");
+	var differenceBirthdayYearMillisec = newBirthday -setBirthday;
+	var differenceYearBirthdaytoBirthday = Math.ceil(differenceBirthdayYearMillisec / 1000 / 60 / 60 / 24);
+	
+
 	var differenceInMilliseconds = setBirthday-currdate;
+
+	
+	
 	var differenceInDays = Math.ceil(differenceInMilliseconds / 1000 / 60 / 60 / 24);
 	console.log(differenceInDays);
-	if (differenceInDays === 0) {
+	
+	var differenceIndays1 = differenceYearBirthdaytoBirthday +differenceInDays;
+	console.log(differenceIndays1 +"mm"); 
+	if (differenceIndays1 === 0) {
 	return 0;
 	}	
-
+	
+	
 	if (setBirthday < currdate) {
-	 return "Du fyller år om "+ ((differenceInDays*-1)+365)+" dagar";
+		if(differenceInDays<-365){
+			if (differenceIndays1>0) {
+			return "Du fyller år om "+ differenceIndays1 +" dagar!";}
+			
+			return "Du fyller år om "+ (365+differenceIndays1) +" dagar!";}
+			
+	 return "Du fyller år om "+ (365+differenceInDays)+" dagar";
 	}
 	if (setBirthday > currdate) {
 	 return "Du fyller år om " +differenceInDays +" dagar";
