@@ -1,7 +1,5 @@
 ﻿"use strict";
 
-
-
 function PopUpFoundation(width, height) {
 	this.width = width;
 	this.height = height;
@@ -36,13 +34,41 @@ PopUpFoundation.prototype.render = function(){
 	popup.parentNode.removeChild(popup) 
 	loadBar.parentNode.removeChild(loadBar) };	
 	
-	
-	popup.appendChild(exitButton);
+	header.appendChild(exitButton);
+	popup.appendChild(header)
 	popup.appendChild(loadBar);
 	container.appendChild(popup);
-};
+	
+	
+		//var popup = document.querySelector('.window'); // element to make resizable
+		//var div = document.querySelector('.window');
+
+	popup.addEventListener('mousedown', initDrag, false);    
 
 
+	var startX, startY, startWidth, startHeight;
+
+	function initDrag(e) {
+	   startX = e.clientX;
+	   startY = e.clientY;
+	   startWidth = parseInt(document.defaultView.getComputedStyle(popup).width, 10);
+	   startHeight = parseInt(document.defaultView.getComputedStyle(popup).height, 10);
+	   document.documentElement.addEventListener('mousemove', doDrag, false);
+	   document.documentElement.addEventListener('mouseup', stopDrag, false);
+	};
+
+		function doDrag(e) {
+		   popup.style.width = (startWidth + e.clientX - startX) + 'px';
+		   popup.style.height = (startHeight + e.clientY - startY) + 'px';
+		};
+
+		function stopDrag(e) {
+			document.documentElement.removeEventListener('mousemove', doDrag, false);
+			document.documentElement.removeEventListener('mouseup', stopDrag, false);
+		};
+
+			
+	} ;
 
 //Med denna kan jag skapa flera fönster ju (som en mall)och den ärver från popup foundation //
 function PopUpImages () {   
