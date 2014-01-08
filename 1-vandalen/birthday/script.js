@@ -3,8 +3,7 @@
 window.onload = function(){
 
 	var birthday = function(date){
-		
-			
+				
 		var validateInput = /(\d{4})[-\/](\d{2})[-\/](\d{2})/.exec(date)
 		
 	if (validateInput == null)
@@ -17,28 +16,26 @@ window.onload = function(){
 	
 	var currdate = new Date();	
 	var currentYear = currdate.getFullYear();
-	console.log(currentYear + "hej");
 	
 	var setBirthday = new Date(arrDate[1],arrDate[2] - 1,arrDate[3]);
+	var birthdayYear = setBirthday.getFullYear();
 	var newBirthday = new Date(currentYear ,arrDate[2] - 1,arrDate[3]); 
-	console.log(newBirthday +"bnew bth");
+	
+	if (birthdayYear>currentYear){
+	return "Du har ju inte blivit född än!!";
+		}
+	
 	var differenceBirthdayYearMillisec = newBirthday -setBirthday;
 	var differenceYearBirthdaytoBirthday = Math.ceil(differenceBirthdayYearMillisec / 1000 / 60 / 60 / 24);
 	
 
 	var differenceInMilliseconds = setBirthday-currdate;
-
-	
-	
 	var differenceInDays = Math.ceil(differenceInMilliseconds / 1000 / 60 / 60 / 24);
-	console.log(differenceInDays);
-	
 	var differenceIndays1 = differenceYearBirthdaytoBirthday +differenceInDays;
-	console.log(differenceIndays1 +"mm"); 
+	
 	if (differenceIndays1 === 0) {
 	return 0;
 	}	
-	
 	
 	if (setBirthday < currdate) {
 		if(differenceInDays<-365){
@@ -75,8 +72,6 @@ window.onload = function(){
 					break;
 				case 1: message = "Du fyller år imorgon!";
 					break;
-				case 2: message ="ojojoj" + answer + "dagar";
-				break;
 				default: message = answer;
 					break;
 			}
