@@ -21,17 +21,30 @@ PopUpFoundation.prototype.render = function(){
 	//---Header---//
 	 var header = document.createElement('div');
 	 header.className = 'headerbar';	 
-	 
-	 
+	  
 	//---mini Icon---//
-	 var smallIcon = document.createElement('div');
+	 var smallIcon = document.createElement('img');
 	 smallIcon.className = 'smallIcon';	
-	
-	//---Loadbar---//
+	 smallIcon.setAttribute("src", "pics/icon.png");
+	 
+	 //---Content popup---//
+	 var popupContent = document.createElement('div');
+	 popupContent.className = 'popupContent';	 
+			
+	//---Loadbar + loadicon---//
 	var loadBar = document.createElement('div');
-    loadBar.className = 'load';
+    loadBar.className = 'load';	
+	var loadIcon = document.createElement('div');
+    loadIcon.className = 'loadIcon';	
+	setTimeout (function() {
+		loadIcon.style.visibility= "hidden";
+	}, 3000); 	
 	
-	
+	 //---Title---//
+	 var divTitle = document.createElement('div');
+	 var title = document.createTextNode("Hello is it me your looking for?");
+	 divTitle.className = 'titlePopup';	
+	 divTitle.appendChild(title);
 	//---Exit---//
     var exitButton = document.createElement('div');
     exitButton.className = 'exitButton';
@@ -39,28 +52,67 @@ PopUpFoundation.prototype.render = function(){
 	popup.parentNode.removeChild(popup) 
 	loadBar.parentNode.removeChild(loadBar) };	
 	
+	loadBar.appendChild(loadIcon);
+	header.appendChild(smallIcon);
+	header.appendChild(divTitle);
 	header.appendChild(exitButton);
 	popup.appendChild(header)
+	popup.appendChild(popupContent);
 	popup.appendChild(loadBar);
 	container.appendChild(popup);
 	
 	
-		//var popup = document.querySelector('.window'); // element to make resizable
-		//var div = document.querySelector('.window');
-
 	popup.addEventListener('mousedown', initDrag, false);    
+	header.addEventListener('mousedown', movePopUp, false);    
+	
+	
+	function getElementTopLeft(id) {
 
-
+    var ele = id;
+    var top = 0;
+    var left = 0;
+   
+    while(ele.tagName != "BODY") {
+        top += ele.offsetTop;
+        left += ele.offsetLeft;
+        ele = ele.offsetParent;
+    }
+    return { top: top, left: left };
+	}
+	
+	var topLeft = getElementTopLeft(popup);
+	
+	//console.log(TopLeft.top);
+	 function movePopUp(e){
+	 console.log("rumple!");
+	   var cordx = topLeft.top;
+	   var cordy = topLeft.left;
+	   if (!e) {
+		var e = window.event;
+	   }
+	//   if (e.pageX || e.pageY){
+	//	cordx = e.pageX;
+	//	cordy = e.pageY;
+	//   }
+	   if (e.clientX || e.clientY){
+		cordx = e.clientX;
+		cordy = e.clientY;
+	   }
+	   console.log(topLeft.top);
+		popup.style.left = topLeft.left +"px";
+		popup.style.top = topLeft.top +"px";
+	  }
+	
 	var startX, startY, startWidth, startHeight;
 
-	function initDrag(e) {
-	   startX = e.clientX;
-	   startY = e.clientY;
-	   startWidth = parseInt(document.defaultView.getComputedStyle(popup).width, 10);
-	   startHeight = parseInt(document.defaultView.getComputedStyle(popup).height, 10);
-	   document.documentElement.addEventListener('mousemove', doDrag, false);
-	   document.documentElement.addEventListener('mouseup', stopDrag, false);
-	};
+		function initDrag(e) {
+		   startX = e.clientX;
+		   startY = e.clientY;
+		   startWidth = parseInt(document.defaultView.getComputedStyle(popup).width, 10);
+		   startHeight = parseInt(document.defaultView.getComputedStyle(popup).height, 10);
+		   document.documentElement.addEventListener('mousemove', doDrag, false);
+		   document.documentElement.addEventListener('mouseup', stopDrag, false);
+		};
 
 		function doDrag(e) {
 		   popup.style.width = (startWidth + e.clientX - startX) + 'px';
@@ -78,7 +130,6 @@ PopUpFoundation.prototype.render = function(){
 //Med denna kan jag skapa flera fönster ju (som en mall)och den ärver från popup foundation //
 function PopUpImages () {   
 	PopUpFoundation.call(this,300,400);
-	console.log("haj");
 };
 
 //PopUp ärver från PopUpFoundation

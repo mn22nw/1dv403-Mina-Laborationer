@@ -1,4 +1,5 @@
 ﻿@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans);
 
 	body {		overflow-y: scroll;	
 				font-family:"Georgia", sans-serif;
@@ -56,14 +57,20 @@
 				height:40px;
 				background:#FFF;
 				background-image:url('../pics/headerbar.jpg');
-				border-top:5px solid #3577B7;
+				border-top:2px solid #3577B7;
 				border-bottom:5px solid #3577B7;
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;	
 	}
 	.exitButton{
 				width:30px;
 				height:30px;
 				float:right;
-				margin-right:10px;
+				margin-right:7px;
 				cursor:pointer;
 				background-image:url('../pics/exitbutton.png');
 	}
@@ -75,13 +82,42 @@
 				cursor:pointer;
 				background-image:url('../pics/exitbutton.png');
 	}
+	.popupContent{
+				width:100%;
+				min-height:120px;
+				max-height:410px;
+				height:auto !important;
+				overflow-y:scroll;
+	}
 	
 	.load {	 	width:100%;
 				height:30px;
 				background-image:url('../pics/headerbar.jpg');
 				position:absolute;
-				bottom:0;
-				
+				bottom:0;			
+	}
+	.loadIcon {	 	
+				width:28px;
+				height:28px;
+				background-image:url('../pics/ajax-loader.gif');						
+	}
+	.smallIcon {	 	
+				width:28px;
+				height:28px;
+				float:left;
+				cursor:default;
+				margin-left:5px;
+				margin-top:1px;
+	}
+	.titlePopup {	
+				height:28px;
+				cursor:default;
+				font-weight:bold;
+				color:#3577B7;
+				font-size:1.3em;
+				float:left;
+				padding:5px;
+				line-height:22px;
 	}
 	.resizer {
 				border: 10px solid green;
@@ -89,6 +125,7 @@
 				height:25px;
 	}
 	.popup{ 	min-width: 300px;
+				font-family: 'Alegreya Sans', sans-serif;
 				min-height:200px;
 				max-width:900px;
 				max-height:480px;
@@ -103,4 +140,25 @@
 				border-radius:5px;
 				margin-left:5px;
 	}
-
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(53,119,183,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(53,119,183,0.4); 
+}
