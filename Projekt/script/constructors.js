@@ -21,6 +21,11 @@ PopUpFoundation.prototype.render = function(){
 	//---Header---//
 	 var header = document.createElement('div');
 	 header.className = 'headerbar';	 
+	 
+	 
+	//---mini Icon---//
+	 var smallIcon = document.createElement('div');
+	 smallIcon.className = 'smallIcon';	
 	
 	//---Loadbar---//
 	var loadBar = document.createElement('div');
