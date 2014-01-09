@@ -54,7 +54,7 @@ window.onload = function() {
 		var li = document.createElement("li");
 		var a = document.createElement("a");
 		var img = document.createElement("img");
-		img.setAttribute("src", "pics/qmark.jpg");		
+		img.setAttribute("src", "pics/qm.jpg");		
 		a.appendChild(img);	
 		li.appendChild(a);
 		a.setAttribute("data-id", Memory.imagesArr[i]);
@@ -97,7 +97,8 @@ window.onload = function() {
          x = 1;
 		});
 		});
-			
+		
+		
 		//FUNKAR INTE MED ENTER?!
 		/*atags[i].addEventListener("click", function(e) {
 		var key = e.which || e.keyCode;
@@ -129,8 +130,8 @@ window.onload = function() {
 		if (Memory.idArray[0] !== Memory.idArray[1]){
 		mask.style.visibility= "visible";
 		setTimeout (function() {
-		Memory.flippedImages[0].setAttribute("src", "pics/qmark.jpg");	
-		Memory.flippedImages[1].setAttribute("src", "pics/qmark.jpg");	
+		Memory.flippedImages[0].setAttribute("src", "pics/qm.jpg");	
+		Memory.flippedImages[1].setAttribute("src", "pics/qm.jpg");	
 		Memory.flippedImages.splice(0, 2);
 		}, 1000);
 		setTimeout (function() {
