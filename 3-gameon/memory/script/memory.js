@@ -5,7 +5,7 @@ window.onload = function() {
 	if (!NodeList.prototype.forEach) {
 		NodeList.prototype.forEach = Array.prototype.forEach;
 	};
-	
+
 	var Memory= {
 		submit1:document.querySelector("#submit1"),
 		submit2:document.querySelector("#submit2"),
@@ -82,7 +82,7 @@ window.onload = function() {
 			if (countingBricks === 2){ 
 				compareBricks(a.firstChild); Memory.idArray.length = 0;
 				countingBricks = 0;}
-		});	  	
+			});	  	
 		});
 		
 		function compareBricks(target){
