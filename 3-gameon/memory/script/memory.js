@@ -49,8 +49,7 @@ window.onload = function() {
 		ul.innerHTML ="";
 		
 		
-		for(var i = 0; i < Memory.imagesArr.length; i+=1){ 
-		
+		for(var i = 0; i < Memory.imagesArr.length; i+=1){ 	
 		var li = document.createElement("li");
 		var a = document.createElement("a");
 		var img = document.createElement("img");
