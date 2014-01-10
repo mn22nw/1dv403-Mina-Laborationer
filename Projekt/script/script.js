@@ -20,8 +20,7 @@ window.onload = function() {
 	WEBDESK.util.renderIcon = function(url, windowProperty ) {   
 	
 			var icon1 = new Icon(); 
-			icon1.createIcon(url, windowProperty);
-			
+			icon1.createIcon(url, windowProperty);		
 			
 	};
 	
