@@ -10,9 +10,10 @@ window.onload = function() {
 	WEBDESK.util = WEBDESK.util || {};
 	
 	WEBDESK.util.renderPopUpImages = function() { 
-			
-			var ImagesWindow = new PopUpImages(); 
-			ImagesWindow.render();
+			AjaxTester.init();
+			var imagesWindow = new PopUpImages(); 
+			//imagesWindow.ajaxCall();
+			imagesWindow.render();
 	};
 	
 	//skapar ikonen och tar bakgrundsbilden som ikonbild + startar fönsterfunktionen!

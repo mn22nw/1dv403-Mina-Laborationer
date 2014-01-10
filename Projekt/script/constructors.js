@@ -136,8 +136,12 @@ function PopUpImages () {
 PopUpImages.prototype = new PopUpFoundation();
 
 //lägg till nya funktioner på PopUp prototype
-PopUpImages.prototype.somethingsomething = function(){
-// om den behöver ha egna egenskaper
+PopUpImages.prototype.ajaxCall = function(){
+		
+		
+			var calli = new AjaxTester;
+			calli.init();
+	console.log("påspåret");
 };
 
 
