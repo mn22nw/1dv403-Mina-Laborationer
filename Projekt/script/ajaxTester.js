@@ -10,14 +10,14 @@ var AjaxTester = {
 				var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
 				
 				new AjaxCon(url, function(data){
-					var responseText = xhr.responseText;
-					console.log(responseText);
-					var people = JSON.parse(data);
+				
+					var jImages= JSON.parse(data);
+					console.log(jImages[0].thumbURL);
 					/*var tmpStr = "";
 					for(var i in people){
 						tmpStr += "<p>"+people[i].name+" är av typen "+people[i].type+"</p>";
 					}*/
-					container.innerHTML =people; 
+					container.innerHTML =jImages; 
 				});
 				
 				return false;

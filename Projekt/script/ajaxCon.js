@@ -12,8 +12,10 @@
 		if(xhr.readyState === READY_STATE_COMPLETE)
 		{
 			if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304)
-			{
-				callback(xhr.responseText);				
+			{	
+				//console.log(xhr.responseText);	
+				callback(xhr.responseText);			
+					
 			}
 			else
 			{
@@ -24,7 +26,7 @@
 
 	xhr.open("get", url, true); //commiy
 	
-	xhr.setRequestHeader('If-Modified-Since', 'Mon, 01 Sep 2007 00:00:00 GMT');
+	//xhr.setRequestHeader('If-Modified-Since', 'Mon, 01 Sep 2007 00:00:00 GMT');
 	
 	xhr.send(null);  //skickar ni in nåt är det helt enkelt post-data
 	//har man ingen data bör man ange null
