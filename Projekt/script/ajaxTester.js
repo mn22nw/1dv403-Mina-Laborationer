@@ -1,58 +1,64 @@
 var AjaxTester = {
 	
 	init:function()
-	{
-
+	{			if (!NodeList.prototype.forEach) {
+					NodeList.prototype.forEach = Array.prototype.forEach;
+				};
+				
 				console.log("gotty");
 				var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
-				
+
 				new AjaxCon(url, function(data){
 				
 					var jImages= JSON.parse(data);
-					var container = document.querySelector(".popupContent");
+					var containerPopUp = document.querySelector(".popupContent");
+					var page = document.querySelector("#page");
 					var maxWidth = 0;
+					var thumbHeight = jImages[0].thumbHeight;
 					console.log(jImages);
 					
 					
-					for(var i = 0; i < jImages.length; i+=1){ 	
-					
+					for(var i = 0; i < jImages.length; i+=1){ 						
 						if (jImages[i].thumbWidth > maxWidth){
 						maxWidth = jImages[i].thumbWidth;
 					}};
 					
-					console.log(maxWidth);
+					var imgURL;
+					
+					var initUrls = function(n) {
+						return function(e) {
+							e = e || window.event; 
+							e.preventDefault();
+							console.log(imgURL);
+							page.style.backgroundImage = "url('" +jImages[n].URL +"')" ;
+						};
+					};
 					
 					for(var i in jImages){
 						var tumbNailBox = document.createElement('div');
 						tumbNailBox.className = 'tumbNailBox';	
+						tumbNailBox.style.width = maxWidth +"px";
+						tumbNailBox.style.height =thumbHeight +"px";
+						imgURL = initUrls(i);
+						//console.log(imgURL);
+						var a = document.createElement('a');
+						a.className = "atag";
+						a.href = "#";
 						
+						a.addEventListener("click", imgURL , false);	
+
 						var tumbNailImg = document.createElement('img');
 						tumbNailImg.className = "tumbNailImg";
 						tumbNailImg.setAttribute("src", jImages[i].thumbURL);		
 						tumbNailBox.appendChild(tumbNailImg);
-						container.appendChild(tumbNailBox);
-					}
+						a.appendChild(tumbNailBox);
+						containerPopUp.appendChild(a);
+					};	
 					
-				});
-				
-	
+					var atags = document.querySelectorAll(".popup a");  // array med a-taggarna
 			
-	
-	},
-	
-	onTumbnailClicked:function(e)
-	{
-		//Kanske bakgrund här? hmmm
-	/*	var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
-		var container = document.getElementById("textId1");
-		
-		new AjaxCon(url, function(data){
-			container.innerHTML = data;
-		});
-		
-		return false;*/
-	} 
-
+				});
+	}
 };
 window.onload = AjaxTester.init;
 
