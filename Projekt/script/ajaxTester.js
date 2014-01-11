@@ -9,13 +9,30 @@ var AjaxTester = {
 				new AjaxCon(url, function(data){
 				
 					var jImages= JSON.parse(data);
-					console.log(jImages[0].thumbURL);
-					/*var tmpStr = "";
-					for(var i in people){
-						tmpStr += "<p>"+people[i].name+" är av typen "+people[i].type+"</p>";
-					}*/
 					var container = document.querySelector(".popupContent");
-					container.innerHTML =jImages; 
+					var maxWidth = 0;
+					console.log(jImages);
+					
+					
+					for(var i = 0; i < jImages.length; i+=1){ 	
+					
+						if (jImages[i].thumbWidth > maxWidth){
+						maxWidth = jImages[i].thumbWidth;
+					}};
+					
+					console.log(maxWidth);
+					
+					for(var i in jImages){
+						var tumbNailBox = document.createElement('div');
+						tumbNailBox.className = 'tumbNailBox';	
+						
+						var tumbNailImg = document.createElement('img');
+						tumbNailImg.className = "tumbNailImg";
+						tumbNailImg.setAttribute("src", jImages[i].thumbURL);		
+						tumbNailBox.appendChild(tumbNailImg);
+						container.appendChild(tumbNailBox);
+					}
+					
 				});
 				
 	
@@ -23,7 +40,7 @@ var AjaxTester = {
 	
 	},
 	
-	onProductLinkClicked:function(e)
+	onTumbnailClicked:function(e)
 	{
 		//Kanske bakgrund här? hmmm
 	/*	var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
