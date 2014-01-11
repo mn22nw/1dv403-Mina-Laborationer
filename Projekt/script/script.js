@@ -7,6 +7,7 @@ window.onload = function() {
 	WEBDESK.util = WEBDESK.util || {};
 	
 	WEBDESK.util.renderPopUpImages = function() { 
+	console.log("igen");
 			AjaxTester.init();
 			var imagesWindow = new PopUpImages(); 
 			imagesWindow.render();

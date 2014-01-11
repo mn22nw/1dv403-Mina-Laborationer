@@ -10,7 +10,7 @@ PopUpFoundation.prototype.render = function(){
 
 	//här skrivs popupfönstret ut och skapar elementen 
 	var container = document.querySelector("#container");
-	
+	var page = document.querySelector("#page");
 	// ---Popup--- //
     var popup = document.createElement('div');
     popup.className = 'popup';
@@ -42,7 +42,7 @@ PopUpFoundation.prototype.render = function(){
 	
 	 //---Title---//
 	 var divTitle = document.createElement('div');
-	 var title = document.createTextNode("Hello is it me your looking for?");
+	 var title = document.createTextNode("Image Viewer");
 	 divTitle.className = 'titlePopup';	
 	 divTitle.appendChild(title);
 	//---Exit---//
@@ -61,6 +61,55 @@ PopUpFoundation.prototype.render = function(){
 	popup.appendChild(loadBar);
 	container.appendChild(popup);
 	
+	if ( popup.style.top > 105) {
+	console.log("29999999");
+			popup.style.left = page.offsetLeft + 400 + "px";
+			popup.style.top = page.offsetTop + 15 + "px";
+		}
+		
+	if ( popup.previousSibling != "") {
+		var positionPopup = findPos(popup.previousSibling);
+		
+	
+		popup.style.left = positionPopup[0] - page.offsetLeft + 5 + "px";
+		popup.style.top = positionPopup[1] - page.offsetTop + 10 + "px";
+		console.log ( popup.style.top);
+		
+		
+	};
+	
+	//console.log(popup.offsetLeft);
+	//popup.offsetLeft
+	
+	//HITTA POSITIONEN AV POPUP//
+	function findPos(obj) {
+		var curleft = 0;
+		var curtop = 0;
+		if (obj.offsetParent) {
+		do {
+			curleft += obj.offsetLeft;
+			curtop += obj.offsetTop;
+			} while (obj = obj.offsetParent);
+			return [curleft,curtop];
+	}};
+	
+	//PLACERA DIV ÖVERST//
+	var allPopups = document.querySelectorAll(".popup");
+	var prev = false;
+
+	for(var i=0; i <allPopups.length;i++) {
+	  allPopups[i].addEventListener('click', function() {
+	  console.log("hej");
+		this.style.position = 'absolute'; 
+		if(prev) { prev.style.zIndex = 1; }
+		  this.style.zIndex = 1000;
+		  prev = this;
+			});
+		  };
+	
+	
+	
+	// ÄNDRA STORLEK ETC //
 	
 	popup.addEventListener('mousedown', initDrag, false);    
 	header.addEventListener('mousedown', movePopUp, false);    
@@ -84,7 +133,6 @@ PopUpFoundation.prototype.render = function(){
 	
 	//console.log(TopLeft.top);
 	 function movePopUp(e){
-	 console.log("rumple!");
 	   var cordx = topLeft.top;
 	   var cordy = topLeft.left;
 	   if (!e) {
@@ -98,7 +146,7 @@ PopUpFoundation.prototype.render = function(){
 		cordx = e.clientX;
 		cordy = e.clientY;
 	   }
-	   console.log(topLeft.top);
+	  // console.log(topLeft.top);
 		popup.style.left = topLeft.left +"px";
 		popup.style.top = topLeft.top +"px";
 	  }
@@ -173,12 +221,10 @@ Icon.prototype.createIcon = function(url, window) {
 	icon.addEventListener("click", function(e){
 			e.preventDefault();
 			window();
-			//changeBackground.call(desktop,"url('pics/taskbar.jpg')"); 
 			});
 			
 	icon.className = "icon";
 	taskbar.appendChild(icon);
-	var desktop = document.querySelector("#page");
 
 
 };

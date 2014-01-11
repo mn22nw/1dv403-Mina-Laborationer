@@ -4,8 +4,7 @@ var AjaxTester = {
 	{			if (!NodeList.prototype.forEach) {
 					NodeList.prototype.forEach = Array.prototype.forEach;
 				};
-				
-				console.log("gotty");
+	
 				var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
 
 				new AjaxCon(url, function(data){
@@ -23,13 +22,10 @@ var AjaxTester = {
 						maxWidth = jImages[i].thumbWidth;
 					}};
 					
-					var imgURL;
-					
 					var initUrls = function(n) {
 						return function(e) {
 							e = e || window.event; 
 							e.preventDefault();
-							console.log(imgURL);
 							page.style.backgroundImage = "url('" +jImages[n].URL +"')" ;
 						};
 					};
@@ -40,7 +36,6 @@ var AjaxTester = {
 						tumbNailBox.style.width = maxWidth +"px";
 						tumbNailBox.style.height =thumbHeight +"px";
 						imgURL = initUrls(i);
-						//console.log(imgURL);
 						var a = document.createElement('a');
 						a.className = "atag";
 						a.href = "#";
@@ -55,7 +50,7 @@ var AjaxTester = {
 						containerPopUp.appendChild(a);
 					};	
 					
-					var atags = document.querySelectorAll(".popup a");  // array med a-taggarna
+					// var atags = document.querySelectorAll(".popup a");  // array med a-taggarna
 			
 				});
 	}
