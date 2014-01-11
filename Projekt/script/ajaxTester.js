@@ -2,11 +2,8 @@ var AjaxTester = {
 	
 	init:function()
 	{
-		
-		document.getElementById("bilderna").onclick = function(e){
-				console.log("hej");
-				e.preventDefault();
-				
+
+				console.log("gotty");
 				var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
 				
 				new AjaxCon(url, function(data){
@@ -17,28 +14,27 @@ var AjaxTester = {
 					for(var i in people){
 						tmpStr += "<p>"+people[i].name+" är av typen "+people[i].type+"</p>";
 					}*/
+					var container = document.querySelector(".popupContent");
 					container.innerHTML =jImages; 
 				});
 				
-				return false;
+	
 			
-		};
-		
-		console.log("hej");
+	
 	},
 	
 	onProductLinkClicked:function(e)
 	{
-		
-		var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
+		//Kanske bakgrund här? hmmm
+	/*	var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
 		var container = document.getElementById("textId1");
 		
 		new AjaxCon(url, function(data){
 			container.innerHTML = data;
 		});
 		
-		return false;
-	}
+		return false;*/
+	} 
 
 };
 window.onload = AjaxTester.init;

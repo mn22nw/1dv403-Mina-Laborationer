@@ -24,9 +24,8 @@
 		}
 	};
 
-	xhr.open("get", url, true); //commiy
+	xhr.open("get", url, true); 
 	
-	//xhr.setRequestHeader('If-Modified-Since', 'Mon, 01 Sep 2007 00:00:00 GMT');
 	
 	xhr.send(null);  //skickar ni in nåt är det helt enkelt post-data
 	//har man ingen data bör man ange null

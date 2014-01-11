@@ -136,12 +136,22 @@ function PopUpImages () {
 PopUpImages.prototype = new PopUpFoundation();
 
 //lägg till nya funktioner på PopUp prototype
-PopUpImages.prototype.ajaxCall = function(){
+PopUpImages.prototype.logga = function(){
+		console.log("logga");
+			//någon mer egenskap kanske?
+};
+
+function PopUpMemory () {   
+	PopUpFoundation.call(this,300,400);
+};
+
+//PopUp ärver från PopUpFoundation
+PopUpMemory.prototype = new PopUpFoundation();
+
+//lägg till nya funktioner på PopUp prototype
+PopUpMemory.prototype.somethingsomething = function(){
 		
-		
-			var calli = new AjaxTester;
-			calli.init();
-	console.log("påspåret");
+			//någon mer egenskap kanske?
 };
 
 
