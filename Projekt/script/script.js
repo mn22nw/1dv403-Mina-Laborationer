@@ -8,9 +8,10 @@ window.onload = function() {
 	
 	WEBDESK.util.renderPopUpImages = function() { 
 	console.log("igen");
-			AjaxTester.init();
+			
 			var imagesWindow = new PopUpImages(); 
-			imagesWindow.render();
+			imagesWindow.render.init();
+			imagesWindow.ajaxCall();
 			//imagesWindow.logga();
 	};
 	

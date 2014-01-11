@@ -6,18 +6,29 @@ function PopUpFoundation(width, height) {
 
 };
 
-PopUpFoundation.prototype.render = function(){
+var Memory= {
+		submit1:document.querySelector("#submit1"),
+		submit2:document.querySelector("#submit2"),
+		idArray:[],
+		imagesArr:[], 
+		flippedImages:[],
+		init: function(value1,value2) {
+		Memory.imagesArr = new RandomGenerator.getPictureArray(value1,value2);
+		}
+	};
+
+
+PopUpFoundation.prototype.render = {
+
+	init: function(){
 
 	//här skrivs popupfönstret ut och skapar elementen 
 	var container = document.querySelector("#container");
 	var page = document.querySelector("#page");
+
 	// ---Popup--- //
     var popup = document.createElement('div');
     popup.className = 'popup';
-	popup.style.width = this.width; 
-	popup.style.height = this.height; 
-	console.log(popup.style.height);
-	
 	//---Header---//
 	 var header = document.createElement('div');
 	 header.className = 'headerbar';	 
@@ -61,22 +72,29 @@ PopUpFoundation.prototype.render = function(){
 	popup.appendChild(loadBar);
 	container.appendChild(popup);
 	
-	if ( popup.style.top > 105) {
+
+	if ( popup.previousSibling != null && popup.previousSibling != undefined)
+	
+	
+    var style = window.getComputedStyle(popup),
+    top = style.getPropertyValue('top');
+	if (top > "10px") console.log("hoio");
+	
+/*	if ( popup.style.top > 105) {
 	console.log("29999999");
 			popup.style.left = page.offsetLeft + 400 + "px";
 			popup.style.top = page.offsetTop + 15 + "px";
 		}
 		
-	if ( popup.previousSibling != "") {
+	if ( popup.previousSibling != null && popup.previousSibling != undefined) {
 		var positionPopup = findPos(popup.previousSibling);
-		
-	
+
 		popup.style.left = positionPopup[0] - page.offsetLeft + 5 + "px";
 		popup.style.top = positionPopup[1] - page.offsetTop + 10 + "px";
 		console.log ( popup.style.top);
 		
 		
-	};
+	};*/
 	
 	//console.log(popup.offsetLeft);
 	//popup.offsetLeft
@@ -173,7 +191,8 @@ PopUpFoundation.prototype.render = function(){
 		};
 
 			
-	} ;
+	}
+	};
 
 //Med denna kan jag skapa flera fönster ju (som en mall)och den ärver från popup foundation //
 function PopUpImages () {   
@@ -184,8 +203,10 @@ function PopUpImages () {
 PopUpImages.prototype = new PopUpFoundation();
 
 //lägg till nya funktioner på PopUp prototype
-PopUpImages.prototype.logga = function(){
+PopUpImages.prototype.ajaxCall = function(){
 		console.log("logga");
+		//kör foreach content innan ajax eller i!!
+		AjaxTester.init();
 			//någon mer egenskap kanske?
 };
 

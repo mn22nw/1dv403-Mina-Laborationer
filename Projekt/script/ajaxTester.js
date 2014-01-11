@@ -47,8 +47,13 @@ var AjaxTester = {
 						tumbNailImg.setAttribute("src", jImages[i].thumbURL);		
 						tumbNailBox.appendChild(tumbNailImg);
 						a.appendChild(tumbNailBox);
-						containerPopUp.appendChild(a);
-					};	
+						
+						var allContainersInPopUp = document.querySelectorAll(".popupContent");
+						
+						allContainersInPopUp.forEach( function (e) {	 
+						e.appendChild(a);});
+						
+						};	
 					
 					// var atags = document.querySelectorAll(".popup a");  // array med a-taggarna
 			
