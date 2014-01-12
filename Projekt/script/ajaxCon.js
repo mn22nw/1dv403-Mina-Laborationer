@@ -37,12 +37,7 @@
 	timer	= setInterval(function(){console.log("OMG IT TOOK FOREWA");
 		 },400);
 		 
-	xhr.send(null);  //skickar ni in nåt är det helt enkelt post-data
-	//när jag kör sänd startar jag en timer har jag inte fått svar inom 300 millisek
-	//slänger jag upp laddarsymbol 
-		
-        
-	
+	xhr.send(null); 
   }
 
   AjaxCon.prototype.getXHR = function(){

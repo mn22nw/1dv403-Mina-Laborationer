@@ -8,7 +8,7 @@ function PopUpFoundation(width, height) {
 
 PopUpFoundation.prototype.render = {
 
-	init: function(content){ 
+	init: function(content, classname){ 
 
 	//här skrivs popupfönstret ut och skapar elementen 
 	var container = document.querySelector("#container");
@@ -16,7 +16,8 @@ PopUpFoundation.prototype.render = {
 
 	// ---Popup--- //
     var popup = document.createElement('div');
-    popup.className = 'popup';
+    popup.className = 'popup'+ classname;
+	
 	//---Header---//
 	 var header = document.createElement('div');
 	 header.className = 'headerbar';	 

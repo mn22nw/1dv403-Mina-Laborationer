@@ -7,11 +7,12 @@ var AjaxTester = {
 				var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
 				
 				
-				//var singeImageWindow = new singleImages(); 
+				var singeImageWindow = new singleImages(); 
 					
 					
 				new AjaxCon(url, function(data){
 					var jImages= JSON.parse(data);
+					console.log(jImages);
 					var containerPopUp = document.querySelector(".popupContent");
 					var page = document.querySelector("#page");
 					var maxWidth = 0;
@@ -29,15 +30,19 @@ var AjaxTester = {
 							e.preventDefault();
 							page.style.backgroundImage = "url('" +jImages[n].URL +"')" ;
 							
-							/*singeImageWindow.render.init(2);
-							var imgBigPopup = document.querySelector(".popup2");											
-							var parentImg = document.querySelector("#content");
-			
-							var singleImgContent = document.querySelector(".popupContent2");
 							var imgBig = document.createElement('img');
-							imgBig.setAttribute("src", jImages[n].URL);
-							singleImgContent.appendChild(imgBig);	 */
-						};
+								imgBig.setAttribute("src", jImages[n].URL);	
+								imgBig.className = "imgBig";
+							singeImageWindow.render.init(imgBig, "bildvisare");
+							var setSizeWindow = document.querySelector(".popupbildvisare");
+							console.log(jImages[n].height);
+							if(jImages[n].height > 375) {
+								setSizeWindow.style.width =	"225px";
+								setSizeWindow.style.minWidth ="225px";
+								setSizeWindow.style.maxWidth ="225px";
+								
+								};
+							};
 					};
 					var popupContent = document.createElement('div'); 
 						popupContent.className = 'popupContent';
@@ -62,7 +67,7 @@ var AjaxTester = {
 						popupContent.appendChild(a);
 						};
 
-						imagesWindow.render.init(popupContent);
+						imagesWindow.render.init(popupContent, "ajax");
 	});
 	}
 };
