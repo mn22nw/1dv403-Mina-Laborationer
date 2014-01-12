@@ -8,6 +8,7 @@ window.onload = function() {
 	
 	WEBDESK.util.renderPopUpImages = function() { 
 			
+			//var btn=document.createTextNode("Hello World");
 			AjaxTester.init();
 		
 	};

@@ -1,12 +1,14 @@
-  function AjaxCon(url, callback){
+ï»¿  function AjaxCon(url, callback){
 	var READY_STATE_UNINITIALIZED = 0;
 	var READY_STATE_OPENED = 1;
 	var READY_STATE_SENT = 2;
 	var READY_STATE_LOADING = 3;
-	var READY_STATE_COMPLETE = 4; // "allt är färdigt o man har fått svar"
+	var READY_STATE_COMPLETE = 4; // "allt Ã¤r fÃ¤rdigt o man har fÃ¥tt svar"
 
 	var xhr = this.getXHR();
 	var timer;
+	
+	
 	xhr.onreadystatechange = function(){
 		
 		if(xhr.readyState === READY_STATE_COMPLETE)
@@ -14,23 +16,30 @@
 			if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304)
 			{
 				clearInterval(timer);
+				loadBar.parentNode.removeChild(loadBar);
 				callback(xhr.responseText);				
 			}
 			else
 			{
-				console.log("Läsfel, status:"+xhr.status);	
+				console.log("LÃ¤sfel, status:"+xhr.status);	
 			}
 		}
 	};
 
 	xhr.open("get", url, true);
 	
+	var loadBar = document.createElement('div'); 
+	loadBar.className = 'popupLoadBar';
+
+	var contain = document.querySelector("#container");
+	contain.appendChild(loadBar);
+	
 	timer	= setInterval(function(){console.log("OMG IT TOOK FOREWA");
-		 },300);
+		 },400);
 		 
-	xhr.send(null);  //skickar ni in nåt är det helt enkelt post-data
-	//när jag kör sänd startar jag en timer har jag inte fått svar inom 300 millisek
-	//slänger jag upp laddarsymbol 
+	xhr.send(null);  //skickar ni in nÃ¥t Ã¤r det helt enkelt post-data
+	//nÃ¤r jag kÃ¶r sÃ¤nd startar jag en timer har jag inte fÃ¥tt svar inom 300 millisek
+	//slÃ¤nger jag upp laddarsymbol 
 		
         
 	

@@ -26,16 +26,10 @@ PopUpFoundation.prototype.render = {
 	 smallIcon.className = 'smallIcon';	
 	 smallIcon.setAttribute("src", "pics/icon.png");
 	 
-
-			
+		
 	//---Loadbar + loadicon---//
 	var loadBar = document.createElement('div');
     loadBar.className = 'load';	
-	var loadIcon = document.createElement('div');
-    loadIcon.className = 'loadIcon';	
-	setTimeout (function() {
-		loadIcon.style.visibility= "hidden";
-	}, 3000); 	
 	
 	 //---Title---//
 	 var divTitle = document.createElement('div');
@@ -49,7 +43,6 @@ PopUpFoundation.prototype.render = {
 	popup.parentNode.removeChild(popup) 
 	loadBar.parentNode.removeChild(loadBar) };	
 	
-	loadBar.appendChild(loadIcon);
 	header.appendChild(smallIcon);
 	header.appendChild(divTitle);
 	header.appendChild(exitButton);
@@ -103,7 +96,6 @@ PopUpFoundation.prototype.render = {
 
 	for(var i=0; i <allPopups.length;i++) {
 	  allPopups[i].addEventListener('click', function() {
-	  console.log("hej");
 		this.style.position = 'absolute'; 
 		if(prev) { prev.style.zIndex = 1; }
 		  this.style.zIndex = 1000;

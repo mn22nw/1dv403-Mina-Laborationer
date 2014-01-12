@@ -63,8 +63,6 @@ var AjaxTester = {
 						};
 
 						imagesWindow.render.init(popupContent);
-								
-
 	});
 	}
 };
