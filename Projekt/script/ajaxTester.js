@@ -1,22 +1,22 @@
 var AjaxTester = {
-	
 	init:function()
 	{			if (!NodeList.prototype.forEach) {
 					NodeList.prototype.forEach = Array.prototype.forEach;
 				};
 	
 				var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
-				var singeImageWindow = new singleImages(); 
+				
+				
+				//var singeImageWindow = new singleImages(); 
 					
 					
 				new AjaxCon(url, function(data){
-				
 					var jImages= JSON.parse(data);
 					var containerPopUp = document.querySelector(".popupContent");
 					var page = document.querySelector("#page");
 					var maxWidth = 0;
 					var thumbHeight = jImages[0].thumbHeight;
-					console.log(jImages);
+					
 					
 					for(var i = 0; i < jImages.length; i+=1){ 						
 						if (jImages[i].thumbWidth > maxWidth){
@@ -39,9 +39,10 @@ var AjaxTester = {
 							singleImgContent.appendChild(imgBig);	 */
 						};
 					};
-					 var popupContent = document.createElement('div'); 
-						popupContent.className = 'popupContent';	
-					  	var imagesWindow1 = new PopUpImages(); 
+					var popupContent = document.createElement('div'); 
+						popupContent.className = 'popupContent';
+					var imagesWindow = new PopUpImages(); 
+					
 					for(var i in jImages){
 						var tumbNailBox = document.createElement('div');
 						tumbNailBox.className = 'tumbNailBox';	
@@ -59,14 +60,14 @@ var AjaxTester = {
 						tumbNailBox.appendChild(tumbNailImg);
 						a.appendChild(tumbNailBox);
 						popupContent.appendChild(a);
-					};
+						};
 
-						imagesWindow1.render.init(popupContent);
+						imagesWindow.render.init(popupContent);
+								
 
 	});
 	}
 };
-window.onload = AjaxTester.init;
 
 
 

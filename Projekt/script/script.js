@@ -7,12 +7,9 @@ window.onload = function() {
 	WEBDESK.util = WEBDESK.util || {};
 	
 	WEBDESK.util.renderPopUpImages = function() { 
-	console.log("igen");
 			
-			//var btn=document.createTextNode("Hello World");
-			var imagesWindow = new PopUpImages(); 
-			imagesWindow.ajaxCall();
-			//imagesWindow.logga();
+			AjaxTester.init();
+		
 	};
 	
 	WEBDESK.util.renderMemory= function() { 

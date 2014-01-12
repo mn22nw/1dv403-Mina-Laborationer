@@ -6,15 +6,15 @@
 	var READY_STATE_COMPLETE = 4; // "allt är färdigt o man har fått svar"
 
 	var xhr = this.getXHR();
-
+	var timer;
 	xhr.onreadystatechange = function(){
 		
 		if(xhr.readyState === READY_STATE_COMPLETE)
 		{
 			if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304)
-			{	
-				callback(xhr.responseText);			
-					
+			{
+				clearInterval(timer);
+				callback(xhr.responseText);				
 			}
 			else
 			{
@@ -23,13 +23,17 @@
 		}
 	};
 
-	xhr.open("get", url, true); 
+	xhr.open("get", url, true);
 	
-	
+	timer	= setInterval(function(){console.log("OMG IT TOOK FOREWA");
+		 },300);
+		 
 	xhr.send(null);  //skickar ni in nåt är det helt enkelt post-data
-	//har man ingen data bör man ange null
 	//när jag kör sänd startar jag en timer har jag inte fått svar inom 300 millisek
 	//slänger jag upp laddarsymbol 
+		
+        
+	
   }
 
   AjaxCon.prototype.getXHR = function(){
