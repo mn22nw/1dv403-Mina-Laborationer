@@ -9,8 +9,8 @@ window.onload = function() {
 	WEBDESK.util.renderPopUpImages = function() { 
 	console.log("igen");
 			
+			//var btn=document.createTextNode("Hello World");
 			var imagesWindow = new PopUpImages(); 
-			imagesWindow.render.init();
 			imagesWindow.ajaxCall();
 			//imagesWindow.logga();
 	};

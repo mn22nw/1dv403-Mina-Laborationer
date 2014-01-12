@@ -6,21 +6,9 @@ function PopUpFoundation(width, height) {
 
 };
 
-var Memory= {
-		submit1:document.querySelector("#submit1"),
-		submit2:document.querySelector("#submit2"),
-		idArray:[],
-		imagesArr:[], 
-		flippedImages:[],
-		init: function(value1,value2) {
-		Memory.imagesArr = new RandomGenerator.getPictureArray(value1,value2);
-		}
-	};
-
-
 PopUpFoundation.prototype.render = {
 
-	init: function(){
+	init: function(content){ 
 
 	//här skrivs popupfönstret ut och skapar elementen 
 	var container = document.querySelector("#container");
@@ -38,9 +26,7 @@ PopUpFoundation.prototype.render = {
 	 smallIcon.className = 'smallIcon';	
 	 smallIcon.setAttribute("src", "pics/icon.png");
 	 
-	 //---Content popup---//
-	 var popupContent = document.createElement('div');
-	 popupContent.className = 'popupContent';	 
+
 			
 	//---Loadbar + loadicon---//
 	var loadBar = document.createElement('div');
@@ -68,7 +54,7 @@ PopUpFoundation.prototype.render = {
 	header.appendChild(divTitle);
 	header.appendChild(exitButton);
 	popup.appendChild(header)
-	popup.appendChild(popupContent);
+	popup.appendChild(content);
 	popup.appendChild(loadBar);
 	container.appendChild(popup);
 	
@@ -199,22 +185,27 @@ function PopUpImages () {
 	PopUpFoundation.call(this,300,400);
 };
 
-//PopUp ärver från PopUpFoundation
+//PopUpImages ärver från PopUpFoundation
 PopUpImages.prototype = new PopUpFoundation();
 
 //lägg till nya funktioner på PopUp prototype
 PopUpImages.prototype.ajaxCall = function(){
-		console.log("logga");
-		//kör foreach content innan ajax eller i!!
 		AjaxTester.init();
-			//någon mer egenskap kanske?
 };
+
+// popup singleImages
+function singleImages () {   
+	PopUpFoundation.call(this,300,400);
+};
+
+singleImages.prototype = new PopUpFoundation();
+
 
 function PopUpMemory () {   
 	PopUpFoundation.call(this,300,400);
 };
 
-//PopUp ärver från PopUpFoundation
+//PopUpMemory ärver från PopUpFoundation
 PopUpMemory.prototype = new PopUpFoundation();
 
 //lägg till nya funktioner på PopUp prototype

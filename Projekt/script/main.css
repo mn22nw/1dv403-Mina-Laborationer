@@ -9,7 +9,7 @@
 			}
 	h2 {			padding-top:10px;}
 	
-	.headerbar, .tumbNailBox, .popupContent {
+	.headerbar, .tumbNailBox, .popupContent, .popupContent2 {
 				-webkit-touch-callout: none;
 				-webkit-user-select: none;
 				-khtml-user-select: none;
@@ -94,6 +94,14 @@
 				max-height:80%;
 				height:auto !important;
 				overflow:hidden;
+				overflow-y:scroll; border:1px solid green;
+	}
+	.popupContent2{
+				width:100%;
+				min-height:120px;
+				max-height:80%;
+				height:auto !important;
+				overflow:hidden;
 				overflow-y:scroll;
 	}
 	
@@ -131,7 +139,9 @@
 				width:25px;
 				height:25px;
 	}
-	.popup{ 	min-width: 300px;
+	.popup, .popup2
+	
+			{ 	min-width: 300px;
 				font-family: 'Alegreya Sans', sans-serif;
 				min-height:200px;
 				max-width:900px;
