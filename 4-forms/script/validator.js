@@ -10,7 +10,7 @@ window.onload = function() {
 	formId:document.querySelector("#theForm"),
 	errorArray:document.querySelectorAll(".errorm"),
 	submit:document.querySelector("#submitknapp"),
-	regexStr: /^[a-zåäö]{1,120}$/,
+	regexStr: /^[a-zåäö]{1,120}$/i,
 	regexEmail: /^[0-9a-z._-]{1,64}@[a-z]{1,}?\.[a-z]{2,}$/im,
 	regexPostcode:/^\w{0,2}\s{0,1}\d{3,3}-{0,1}\s{0,1}\d{2,2}$/,
 	regexFixPostcode:/^\d{5}$/,
