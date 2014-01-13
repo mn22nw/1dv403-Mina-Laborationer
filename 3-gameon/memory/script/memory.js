@@ -58,7 +58,7 @@ window.onload = function() {
 		a.setAttribute("data-id", Memory.imagesArr[i]);
 		a.href = "#";
 		ul.appendChild(li);
-		} //här slutar for-loopen
+		}; //här slutar for-loopen
 				
 		var atags = document.querySelectorAll("#container ul a");  // array med a-taggarna
 		var countTries = 0; 

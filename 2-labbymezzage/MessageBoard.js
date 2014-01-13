@@ -2,13 +2,14 @@
 
 window.onload = function() {
 
-	var div = document.querySelector("#displayMessages"); 
-	var submit = document.querySelector("#send");
-	var input = document.querySelector("#text");
-	var countMessages = document.querySelector("#countMessages");
-	countMessages.innerHTML = "Antal meddelanden"+": "+ 0;
+	
 	
 	var MessageBoard = {
+	div:document.querySelector("#displayMessages"), 
+	submit:document.querySelector("#send"),
+	input:document.querySelector("#text"),
+	countMessages:document.querySelector("#countMessages"),
+	countMessages.innerHTML = "Antal meddelanden"+": "+ 0;
 	messages: [], 
 	init: function(e) {
 	var mess = new Message (e, new Date());
@@ -75,7 +76,7 @@ window.onload = function() {
 		runProgram();} }}
 	
 	var runProgram = function()  {
-	div.innerHTML = "";
+	Messageboard.div.innerHTML = "";
 	var answer = MessageBoard.init(input.value); 
 	MessageBoard.renderMessages();
 	}

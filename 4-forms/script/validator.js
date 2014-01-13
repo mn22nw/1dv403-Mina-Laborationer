@@ -20,17 +20,14 @@ window.onload = function() {
 		var form = Form.formId.elements;
 		form[0].focus();  
 		
-		
-		for (var i=0; i<form.length-2; i+=1) {   
-			var errorm = document.createElement("p");
-			form[i].onfocus = function () {
-				this.select(); 
-			}
-			var validate = validateForm(i);
-		};
-		
+
 		var validateForm = function(n) {
-						
+
+			var matchString = function isStringMatch(str, strToMatch){
+			var indexString = str.indexOf(strToMatch); 
+			 return indexString;
+			};
+			
 			form[n].onblur = function () {	 
 					var fieldName =  this.getAttribute("name");
 					var checkName = matchString( fieldName.toLowerCase(), "namn");
@@ -70,10 +67,16 @@ window.onload = function() {
 					}
 				};
 		};
-		var matchString = function isStringMatch(str, strToMatch){
-			var indexString = str.indexOf(strToMatch); 
-			 return indexString;
-			};
+		
+			for (var i=0; i<form.length-2; i+=1) {   
+			var errorm = document.createElement("p");
+			form[i].onfocus = function () {
+				this.select(); 
+			}
+			var validate = validateForm(i);
+		};
+		
+		
 	
 	},
 	popUp: function (){ console.log("hej");
@@ -88,8 +91,10 @@ window.onload = function() {
 		pExitButton.appendChild(textNodeExitButton);
 		exitButton.appendChild(pExitButton);
 		exitButton.onclick = function (e) { 
-		popup.parentNode.removeChild(popup); 
-		mask.parentNode.removeChild(mask) };
+			popup.parentNode.removeChild(popup); 
+			mask.parentNode.removeChild(mask)
+			Form.submit.value = "Genomför Köp";
+			};
 	
 				//---Cancel---//
 		var cancel = document.createElement('div');
@@ -99,7 +104,9 @@ window.onload = function() {
 		pCancel.appendChild(textNodeCancel);
 		cancel.appendChild(pCancel);
 		cancel.onclick = function (e) { popup.parentNode.removeChild(popup) 
-		mask.parentNode.removeChild(mask)};
+			mask.parentNode.removeChild(mask)
+			Form.submit.value = "Genomför Köp";
+		};
 			
 				//--Confirm--//
 		
@@ -161,28 +168,16 @@ window.onload = function() {
 		}
 	}};	
 	
-
-	// ---Popup--- //
-	var eCheck = function (hej) { return hej;};
+	Form.init();
 	
-	var true1 = Form.popUp();
-	var green = document.getElementById("confirm");
-	green.onclick = function (e) {    // popup.parentNode.removeChild(popup); 
-		console.log("heey");
-		var hej = true;
-		return eCheck(hej);
-		}; 
-		
-	var hej = green.onclick();
-	if (hej) console.log("mm");
-	//document.querySelector("#theForm")
-	// -----Submit form----- //
-	if (true1) { console.log("woop"); Form.submit.value = "Skickar...";}
 	Form.formId.onsubmit = function (e) {
-	
 	e.preventDefault(); 
-
-	if (true1) { console.log("woop"); Form.submit.value = "Skickar...";
+	var popUpWindow = Form.popUp();
+	var confirmButton = document.getElementById("confirm");
+	confirmButton.onclick = function (e) {    // popup.parentNode.removeChild(popup); 
+		console.log("Klickat ok ju!");
+		}; 
+	if (true) { console.log("woop"); Form.submit.value = "Skickar...";
 	//return true;
 	};
 	
