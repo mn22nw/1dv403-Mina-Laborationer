@@ -62,11 +62,9 @@
 	}
 	
 	.headerbar{ display:block;
-				min-width: 300px;
-				min-height:40px;
-				max-width:1024px;
-				max-height:40px;
-				height:12%;
+				width:100%;
+				min-height:35px;
+				height:10%;
 				background:#FFF;
 				background-image:url('../pics/headerbar.jpg');
 				background-size:1px 100%;
@@ -96,7 +94,7 @@
 				margin:0 auto;
 				width:100%;
 				min-height:120px;
-				max-height:81%;
+				max-height:83%;
 				height:auto !important;
 				overflow:hidden;
 				overflow-y:scroll; 
