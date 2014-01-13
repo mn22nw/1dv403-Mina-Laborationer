@@ -216,17 +216,19 @@ this.setUrl = function (_url) { url = _url; };
 this.setUrl(url);
 };
  
-Icon.prototype.createIcon = function(url, window) {
+Icon.prototype.createIcon = function(url, window, id) {
 	var taskbar = document.querySelector('#taskbar');
 	var icon = document.createElement('a');
 	icon.setAttribute("href", "#");
-
+	icon.id = id;
 	icon.style.backgroundImage=	"url('" + url +"')" ;
 	
-	icon.addEventListener("click", function(e){
+	var onClick = function(e){
 			e.preventDefault();
 			window();
-			});
+			}
+	
+	icon.addEventListener("click", onClick, false );
 			
 	icon.className = "icon";
 	taskbar.appendChild(icon);

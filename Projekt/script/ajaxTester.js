@@ -8,9 +8,14 @@ var AjaxTester = {
 				
 				
 				var singeImageWindow = new singleImages(); 
-					
-					
+			
+				var taskbar= document.querySelector('#taskbar');	
+				var coverIcon = document.createElement("div");
+				coverIcon.className = "coverIcon";
+				taskbar.appendChild(coverIcon);
+				
 				new AjaxCon(url, function(data){
+					
 					var jImages= JSON.parse(data);
 					console.log(jImages);
 					var containerPopUp = document.querySelector(".popupContent");
@@ -36,7 +41,7 @@ var AjaxTester = {
 							singeImageWindow.render.init(imgBig, "bildvisare");
 							var setSizeWindow = document.querySelector(".popupbildvisare");
 							console.log(jImages[n].height);
-							if(jImages[n].height > 375) {
+							if(jImages[n].height > 400) {
 								setSizeWindow.style.width =	"225px";
 								setSizeWindow.style.minWidth ="225px";
 								setSizeWindow.style.maxWidth ="225px";
@@ -68,6 +73,7 @@ var AjaxTester = {
 						};
 
 						imagesWindow.render.init(popupContent, "ajax");
+						coverIcon.style.visibility = "hidden";
 	});
 	}
 };

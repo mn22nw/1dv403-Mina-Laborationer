@@ -46,6 +46,8 @@
 				height:80px;
 				display:block;
 				float:left;
+				position:relative;
+				z-index:1;
 				
 	}
 	#bilderna{
@@ -175,7 +177,7 @@
 				font-family: 'Alegreya Sans', sans-serif;
 				min-height:415px;
 				max-width:500px;
-				max-height:41px;
+				max-height:415px;
 				width:500px;
 				height:415px;
 				background:#FFF;
@@ -192,10 +194,14 @@
 	.popupbildvisare img { 
 	margin:0 auto;
 	}
-	
+	.coverIcon {
+				width:90px;
+				height:80px; 
+				z-index:5000;
+				position:absolute;
+				left:0;
+	}
 	.imgBig {
-			max-height: 333px;
-			max-width:500px;
 			width:100%;
 			margin:0 auto;
 	

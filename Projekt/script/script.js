@@ -19,12 +19,12 @@ window.onload = function() {
 	};	
 		
 	//skapar ikonen och tar bakgrundsbilden som ikonbild + startar fönsterfunktionen!
-	WEBDESK.util.renderIcon = function(url, windowProperty ) {   
+	WEBDESK.util.renderIcon = function(url, windowProperty, id ) {   
 			var icon1 = new Icon(); 
-			icon1.createIcon(url, windowProperty);					
+			icon1.createIcon(url, windowProperty, id);					
 	};
 	
-	WEBDESK.util.renderIcon("pics/icon.png", WEBDESK.util.renderPopUpImages); 
+	WEBDESK.util.renderIcon("pics/icon.png", WEBDESK.util.renderPopUpImages, "pictures"); 
 	WEBDESK.util.renderIcon("pics/icon2.png",WEBDESK.util.renderMemory);
 	  
 };
