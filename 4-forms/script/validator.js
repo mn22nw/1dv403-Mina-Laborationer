@@ -40,14 +40,16 @@ window.onload = function() {
 	
 	var matchString = function isStringMatch(str, strToMatch){
 	var indexString = str.indexOf(strToMatch); 
-	console.log(indexString +"eeh");
 	  return indexString;
 	};
 	
 	
-	var validateForm = function(n,fieldName) {
-
-		form[n].onblur = function () {	
+	var validateForm = function(n) {
+				
+				
+		
+		
+		form[n].onblur = function () {	 
 				console.log("ofocus");
 				errorm.textContent ="";
 				
@@ -57,13 +59,21 @@ window.onload = function() {
 					Form.errorArray[n].appendChild(errorm);	
 				};
 				
-				var checkName = matchString( fieldName, "namn");
-				console.log(checkName); 
-				var checkEmail = matchString(fieldName, "email");
-				console.log(checkEmail); 
+				var fieldName =  this.getAttribute("name");
 				
-				if (checkName > 0) console.log("yeey");
-		
+				var checkName = matchString( fieldName.toLowerCase(), "namn");
+				var checkEmail = matchString(fieldName.toLowerCase(), "email");
+				var checkPostcode = matchString(fieldName.toLowerCase(), "post");
+
+				if (checkName >= 0) {
+				console.log(checkName +"detäre namn");}
+				
+				if (checkEmail >= 0) {
+				console.log(checkEmail +"detäremail");}
+				
+				if (checkPostcode >= 0) {
+				console.log(checkPostcode +"detärepost");}
+				
 				
 				// kolla vilket regex som ska användas mot fieldName
 				
@@ -81,7 +91,7 @@ window.onload = function() {
 		form[i].onfocus = function () {
 			this.select(); 
 		}
-		var validate = validateForm(i, form[i].getAttribute("name"));
+		var validate = validateForm(i);
 		
 	} ;
 	
