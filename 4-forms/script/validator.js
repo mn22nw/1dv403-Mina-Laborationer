@@ -28,27 +28,18 @@ window.onload = function() {
 		console.log(postc.value);
 	}
 	}};	
-	//dessa var kommer inte behövas...?
+
 	var form = Form.formId.elements;
-	/*var fn = form.elements["0"];
-	var ln = form.elements["1"];
-	var postc = form.elements["2"];
-	var epost = form.elements["3"];
-	var pricem = form.elements["4"];
-	console.log(form.elements[0].getAttribute("name")); */
 	form[0].focus();  
 	
 	var matchString = function isStringMatch(str, strToMatch){
-	var indexString = str.indexOf(strToMatch); 
-	  return indexString;
+		var indexString = str.indexOf(strToMatch); 
+		 return indexString;
 	};
 	
 	
 	var validateForm = function(n) {
-				
-				
-		
-		
+					
 		form[n].onblur = function () {	 
 				console.log("ofocus");
 				errorm.textContent ="";
@@ -64,20 +55,22 @@ window.onload = function() {
 				var checkName = matchString( fieldName.toLowerCase(), "namn");
 				var checkEmail = matchString(fieldName.toLowerCase(), "email");
 				var checkPostcode = matchString(fieldName.toLowerCase(), "post");
-
+				var regexValue;
+				
 				if (checkName >= 0) {
-				console.log(checkName +"detäre namn");}
+				console.log(checkName +"detäre namn");
+				regexValue = Form.regexStr.test(this.value);
+				}
 				
 				if (checkEmail >= 0) {
-				console.log(checkEmail +"detäremail");}
+				console.log(checkEmail +"detäremail"); 
+				regexValue = Form.regexEmail.test(this.value);}
 				
 				if (checkPostcode >= 0) {
-				console.log(checkPostcode +"detärepost");}
+				console.log(checkPostcode +"detärepost");
+				regexValue = Form.regexPostcode.test(this.value);}
 				
-				
-				// kolla vilket regex som ska användas mot fieldName
-				
-				if (postc.value !=="" && postc.value!== null && postCodeReg.test(postc.value) === false){
+				if (this.value !=="" && this.value!== null && regexValue === false){
 					errorm.textContent ="";
 					var textNode2 = document.createTextNode("Du måste ange ett korrekt " + fieldName.toLowerCase());
 					errorm.appendChild(textNode2);
