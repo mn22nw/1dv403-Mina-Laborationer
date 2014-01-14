@@ -21,7 +21,7 @@ var AjaxTester = {
 					var containerPopUp = document.querySelector(".popupContent");
 					var page = document.querySelector("#page");
 					var maxWidth = 0;
-					var thumbHeight = jImages[0].thumbHeight;
+					var thumbHeight = jImages[0].thumbHeight; //dethär måste jag ändra
 					
 					
 					for(var i = 0; i < jImages.length; i+=1){ 						
