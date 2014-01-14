@@ -8,7 +8,7 @@ function PopUpFoundation(width, height) {
 
 PopUpFoundation.prototype.render = {
 
-	init: function(content, classname){ 
+	init: function(content, classname, title, icon){ 
 
 	//här skrivs popupfönstret ut och skapar elementen 
 	var container = document.querySelector("#container");
@@ -25,8 +25,8 @@ PopUpFoundation.prototype.render = {
 	//---mini Icon---//
 	 var smallIcon = document.createElement('img');
 	 smallIcon.className = 'smallIcon';	
-	 smallIcon.setAttribute("src", "pics/icon.png");
-	 
+	//smallIcon.setAttribute("src", "pics/icon.png");
+	smallIcon.setAttribute("src",( "pics/" + icon+ ".png"));
 		
 	//---Loadbar + loadicon---//
 	var loadBar = document.createElement('div');
@@ -34,7 +34,7 @@ PopUpFoundation.prototype.render = {
 	
 	 //---Title---//
 	 var divTitle = document.createElement('div');
-	 var title = document.createTextNode("Image Viewer");
+	 var title = document.createTextNode(title);
 	 divTitle.className = 'titlePopup';	
 	 divTitle.appendChild(title);
 	//---Exit---//
@@ -109,7 +109,7 @@ PopUpFoundation.prototype.render = {
 	// ÄNDRA STORLEK ETC //
 	
 	popup.addEventListener('mousedown', initDrag, false);    
-	header.addEventListener('mousedown', movePopUp, false);    
+//	header.addEventListener('mousedown', movePopUp, false);    
 	
 	
 	function getElementTopLeft(id) {
@@ -128,6 +128,11 @@ PopUpFoundation.prototype.render = {
 	
 	var topLeft = getElementTopLeft(popup);
 	
+	var  style = window.getComputedStyle(popup);
+    var leftOfPopup = style.getPropertyValue('margin-left');
+
+	popup.style.left = 5 +leftOfPopup;
+	
 	//console.log(TopLeft.top);
 	 function movePopUp(e){
 	   var cordx = topLeft.top;
@@ -143,10 +148,10 @@ PopUpFoundation.prototype.render = {
 		cordx = e.clientX;
 		cordy = e.clientY;
 	   }
-	  // console.log(topLeft.top);
+	
 		popup.style.left = topLeft.left +"px";
 		popup.style.top = topLeft.top +"px";
-	  }
+	  };
 	
 	var startX, startY, startWidth, startHeight;
 
@@ -167,9 +172,7 @@ PopUpFoundation.prototype.render = {
 		function stopDrag(e) {
 			document.documentElement.removeEventListener('mousemove', doDrag, false);
 			document.documentElement.removeEventListener('mouseup', stopDrag, false);
-		};
-
-			
+		};	
 	}
 	};
 
@@ -204,7 +207,7 @@ PopUpMemory.prototype = new PopUpFoundation();
 //lägg till nya funktioner på PopUp prototype
 PopUpMemory.prototype.somethingsomething = function(){
 		
-			//någon mer egenskap kanske?
+			//någon mer egenskap kanske om det behövs?
 };
 
 
@@ -216,11 +219,10 @@ this.setUrl = function (_url) { url = _url; };
 this.setUrl(url);
 };
  
-Icon.prototype.createIcon = function(url, window, id) {
+Icon.prototype.createIcon = function(url, window) {
 	var taskbar = document.querySelector('#taskbar');
 	var icon = document.createElement('a');
 	icon.setAttribute("href", "#");
-	icon.id = id;
 	icon.style.backgroundImage=	"url('" + url +"')" ;
 	
 	var onClick = function(e){

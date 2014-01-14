@@ -38,7 +38,7 @@ var AjaxTester = {
 							var imgBig = document.createElement('img');
 								imgBig.setAttribute("src", jImages[n].URL);	
 								imgBig.className = "imgBig";
-							singeImageWindow.render.init(imgBig, "bildvisare");
+							singeImageWindow.render.init(imgBig, "bildvisare", "Image Viewer", "small_icon1");
 							var setSizeWindow = document.querySelector(".popupbildvisare");
 							console.log(jImages[n].height);
 							if(jImages[n].height > 400) {
@@ -72,7 +72,7 @@ var AjaxTester = {
 						popupContent.appendChild(a);
 						};
 
-						imagesWindow.render.init(popupContent, "ajax");
+						imagesWindow.render.init(popupContent, "ajax", "Image Viewer","small_icon1");
 						coverIcon.style.visibility = "hidden";
 	});
 	}

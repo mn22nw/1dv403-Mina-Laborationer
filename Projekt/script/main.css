@@ -83,12 +83,14 @@
 				background-image:url('../pics/exitbutton.png');
 	}
 	.smallIcon{
-				width:30px;
-				height:30px;
-				float:left;
-				margin-right:10px;
+
 				cursor:pointer;
-				background-image:url('../pics/exitbutton.png');
+				width:28px;
+				height:28px;
+				float:left;
+				cursor:default;
+				margin-left:5px;
+				margin-top:1px;
 	}
 
 	.popupContent{
@@ -123,14 +125,7 @@
 				bottom:0;			
 	}
 
-	.smallIcon {	 	
-				width:28px;
-				height:28px;
-				float:left;
-				cursor:default;
-				margin-left:5px;
-				margin-top:1px;
-	}
+	
 	.titlePopup {	
 				height:28px;
 				cursor:default;
@@ -225,6 +220,38 @@
 				display:block;
 				margin:0 auto;
 	}
+/** Popup för Memory*
+---------------------------------------------------------------------- */	
+	.popupMemory
+	
+			{ 	min-width: 500px;
+				font-family: 'Alegreya Sans', sans-serif;
+				min-height:400px;
+				max-width:700px;
+				max-height:455px;
+				width:500px;
+				height:400px;
+				background:#FFF;
+				cursor:default; 
+				position:absolute;	
+				top:25px;
+				left:45px;
+				border:3px solid #3577B7;
+				border-radius:5px;
+				margin-left:5px;
+				z-index:1;
+				overflow:hidden;
+	}
+	
+	.memory {
+				width:100%;
+				height:100%;
+				background-image:url('../pics/landscape.jpg');
+				background-size:100%;
+				background-repeat:no-repeat;
+				border-radius:3px;
+	}
+
 
 /**DESIGN AV SCROLLBAR *
 ---------------------------------------------------------------------- */	
