@@ -1,4 +1,5 @@
 ﻿@charset "UTF-8";
+
 @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans);
 
 	body {		overflow-y: scroll;	
@@ -16,6 +17,8 @@
 				-moz-user-select: none;
 				-ms-user-select: none;
 				user-select: none;	}
+				
+				
 		/** Anger sidansstorlek och placering*
 ---------------------------------------------------------------------- */				
 	#page {		

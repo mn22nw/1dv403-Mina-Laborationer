@@ -1,5 +1,10 @@
 ﻿"use strict";
 
+NodeList.prototype.map = function(fn) { 
+		var a=[]; for ( var i=0; i<this.length; i++ ){ 
+		a.push(fn(this[i], i, this)); } return a; }; 
+
+
 function PopUpFoundation(width, height) {
 	this.width = width;
 	this.height = height;
@@ -89,18 +94,27 @@ PopUpFoundation.prototype.render = {
 			} while (obj = obj.offsetParent);
 			return [curleft,curtop];
 	}};
+	var popupen = document.querySelector('.popup'+ classname);
+	popupen.style.zIndex = 1;
+	var elements = container.querySelectorAll('.popup'+ classname);
+	var highest_index = 0;
+
+for (var i = 0; i < elements.length - 1; i++) {
+    if (parseInt(elements[i].style.zIndex) > highest_index) {
+        highest_index = parseInt(elements[i].style.zIndex); console.log(highest_index + "Highehe"); 
+		popupen.style.zIndex = highest_index + 1;
+    }
+}
 	
 	//PLACERA DIV ÖVERST//
 	var allPopups = document.querySelectorAll('.popup'+ classname);
 	var popupAjaxImgs = document.querySelectorAll('.popupajax');
 
-
+//http://stackoverflow.com/questions/4503969/how-do-i-get-the-element-with-the-highest-css-z-index-in-a-document
 	for(var i=0; i <allPopups.length;i++) {
 	  allPopups[i].addEventListener('click', function() {
 	 
-	  	NodeList.prototype.map = function(fn) { 
-		var a=[]; for ( var i=0; i<this.length; i++ ){ 
-		a.push(fn(this[i], i, this)); } return a; }; 
+	  	
 		var indexOfObject = Math.max.apply(null, document.getElementsByTagName('*').map(function(el){
 		return el.style.zIndex || 0; })) ;
 		this.style.zIndex = 1000;
@@ -108,9 +122,15 @@ PopUpFoundation.prototype.render = {
 		console.log(intTop + "idnttop");
 		
 		if (indexOfObject >=1000){
-		this.style.zIndex = intTop+=1 }
+		this.style.zIndex = intTop+=1 };
+			
+		if (indexOfObject === 9999){ 	
+			for(var i=0; i <allPopups.length;i++) {
+			allPopups[i].style.zIndex = 100;
+			console.log(allPopups[i].style.zIndex +"waah");
+			this.style.zIndex = 102;
+			}};
 		
-		console.log("wahi "+ indexOfObject);
 		this.style.position = 'absolute'; 
 		
 		console.log(this.style.zIndex);
