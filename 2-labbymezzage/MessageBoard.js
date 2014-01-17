@@ -9,7 +9,7 @@ window.onload = function() {
 	submit:document.querySelector("#send"),
 	input:document.querySelector("#text"),
 	countMessages:document.querySelector("#countMessages"),
-	countMessages.innerHTML = "Antal meddelanden"+": "+ 0;
+	
 	messages: [], 
 	init: function(e) {
 	var mess = new Message (e, new Date());
@@ -29,7 +29,7 @@ window.onload = function() {
 		date.className ='messageDate';
 		text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
 		date.innerHTML = MessageBoard.messages[messageID].getDateText();
-		div.appendChild(messageDiv);
+		MessageBoard.div.appendChild(messageDiv);
 		messageDiv.appendChild(exitSquare);
 		messageDiv.appendChild(clock);
 		messageDiv.appendChild(text);
@@ -56,28 +56,29 @@ window.onload = function() {
 	MessageBoard.messages.splice(messageID, 1);
 	MessageBoard.renderMessages();
 	}
-	}
+	};
+	MessageBoard.countMessages.innerHTML = "Antal meddelanden"+": "+ 0;
 	
 
 	// ------------------------------------------------------------------------------
 
-		submit.addEventListener("click", function(e){
+		MessageBoard.submit.addEventListener("click", function(e){
 		e.preventDefault(); 
-		if (input.value.length > 0)
+		if (MessageBoard.input.value.length > 0)
 		runProgram();
 	});
-		input.onkeydown = function (e) {
+		MessageBoard.input.onkeydown = function (e) {
 		e = e || window.event;
 		var keyCode = e.keyCode || e.which;
 		if(keyCode==13 && e.shiftKey) { 
 		console.log("jodå"); }
-		if (input.value.length > 0) {
+		if (MessageBoard.input.value.length > 0) {
 		if(keyCode==13 && !e.shiftKey) { 
 		runProgram();} }}
 	
 	var runProgram = function()  {
-	Messageboard.div.innerHTML = "";
-	var answer = MessageBoard.init(input.value); 
+	MessageBoard.div.innerHTML = "";
+	var answer = MessageBoard.init(MessageBoard.input.value); 
 	MessageBoard.renderMessages();
 	}
 }
